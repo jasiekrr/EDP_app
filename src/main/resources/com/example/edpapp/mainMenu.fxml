@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane fx:id="mainMenuPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="920.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.edpapp.controllers.MainMenuController">
+   <children>
+      <Text fontSmoothingType="LCD" layoutX="114.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to Plemiona The Game!" textAlignment="CENTER" wrappingWidth="691.13671875">
+         <font>
+            <Font name="Lato Bold Italic" size="48.0" />
+         </font>
+      </Text>
+      <VBox alignment="CENTER" blendMode="SRC_ATOP" layoutX="266.0" layoutY="187.0" prefHeight="347.0" prefWidth="388.0" spacing="15.0">
+         <children>
+            <Button fx:id="btnContinue" alignment="CENTER" contentDisplay="CENTER" disable="true" graphicTextGap="6.0" mnemonicParsing="false" prefWidth="300.0" text="Continue Game" textAlignment="CENTER">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnNew" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="6.0" mnemonicParsing="false" prefHeight="77.0" prefWidth="300.0" text="New Game" textAlignment="CENTER">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnLoad" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="6.0" mnemonicParsing="false" prefWidth="300.0" text="Load Game" textAlignment="CENTER">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnExit" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="6.0" mnemonicParsing="false" onAction="#onActionExit" prefWidth="300.0" text="Exit" textAlignment="CENTER">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
