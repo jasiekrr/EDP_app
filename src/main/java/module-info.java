@@ -4,9 +4,15 @@ module com.example.edpapp {
     requires java.sql;
     requires org.kordamp.bootstrapfx.core;
     requires org.postgresql.jdbc;
+    requires org.hibernate.orm.core;
+    requires javax.persistence;
+    requires java.naming;
+    requires jakarta.persistence;
 
     opens com.example.edpapp to javafx.fxml;
     exports com.example.edpapp;
     exports com.example.edpapp.controllers;
+    exports com.example.edpapp.models;
+    opens com.example.edpapp.models;
     opens com.example.edpapp.controllers to javafx.fxml;
 }

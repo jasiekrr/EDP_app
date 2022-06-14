@@ -7,8 +7,6 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
-import javafx.stage.Stage;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -26,7 +24,7 @@ public class NewGameSettingsController implements Initializable {
     @FXML
     private Button carthageButton;
     @FXML
-    private Button greeceButton;
+    private Button greeksButton;
 
 
     private String[] levels = {"sandbox", "easy", "medium", "hard"};
@@ -65,7 +63,7 @@ public class NewGameSettingsController implements Initializable {
         greeceImageView.setFitHeight(80);
         greeceImageView.setPreserveRatio(true);
 
-        greeceButton.setGraphic(greeceImageView);
+        greeksButton.setGraphic(greeceImageView);
 
     }
 }

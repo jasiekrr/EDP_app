@@ -7,9 +7,7 @@ import javafx.stage.Stage;
 
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+
 
 public class Main extends Application {
     @Override
@@ -23,23 +21,13 @@ public class Main extends Application {
         stage.setResizable(false);
         stage.show();
 
-        testConnection();
-    }
 
-    public void testConnection() throws ClassNotFoundException {
-        String connectionString;
-        Connection connection;
-        try{
-            Class.forName("org.postgresql.Driver");
-            connectionString = "jdbc:postgresql://localhost:5432/gamesDb";
-            connection = DriverManager.getConnection(connectionString, "postgres", "password");
-            System.out.println("connection created!");
-        } catch (SQLException e) {
-            System.out.println("wystapil blad");
-            throw new RuntimeException(e);
-        }
+        DbConnection connector = new DbConnection();
+        connector.connect();
+
 
     }
+
 
     public static void main(String[] args) {
         launch();
