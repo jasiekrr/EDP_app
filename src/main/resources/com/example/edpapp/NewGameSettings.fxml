@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<BorderPane id="newGamePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="782.0" prefWidth="942.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.edpapp.controllers.NewGameSettingsController">
+   <top>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Create New Game!" textAlignment="CENTER" wrappingWidth="402.2159423828125" BorderPane.alignment="CENTER">
+         <font>
+            <Font name="Lato Regular" size="48.0" />
+         </font>
+      </Text>
+   </top>
+   <right>
+      <SplitPane dividerPositions="0.4598337950138504" nodeOrientation="LEFT_TO_RIGHT" orientation="VERTICAL" prefHeight="651.0" prefWidth="991.0" BorderPane.alignment="TOP_CENTER">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="181.0" prefWidth="940.0">
+               <children>
+                  <VBox alignment="TOP_CENTER" layoutX="5.0" layoutY="91.0" prefHeight="582.0" prefWidth="940.0" AnchorPane.bottomAnchor="-315.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="91.0">
+                     <children>
+                        <TextField alignment="CENTER" text="Enter name of your town">
+                           <font>
+                              <Font name="Lato Bold Italic" size="24.0" />
+                           </font>
+                        </TextField>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="48.0" prefWidth="410.0" text="A name which will be used by your Town through out the game" textAlignment="CENTER">
+                           <font>
+                              <Font name="Lato Bold Italic" size="12.0" />
+                           </font>
+                        </Label>
+                        <Separator prefHeight="10.0" prefWidth="200.0" />
+                        <ChoiceBox fx:id="levelChoiceBox" prefHeight="33.0" prefWidth="985.0" />
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="48.0" prefWidth="410.0" text="Choose difficulty level. Sandbox stands for free play without any aggressors" textAlignment="CENTER">
+                           <font>
+                              <Font name="Lato Bold Italic" size="12.0" />
+                           </font>
+                        </Label>
+                        <Separator prefHeight="10.0" prefWidth="200.0" />
+                     </children>
+                     <effect>
+                        <Lighting>
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect>
+                  </VBox>
+               </children>
+            </AnchorPane>
+          <AnchorPane fx:id="settingsAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="538.0" prefWidth="940.0">
+               <children>
+                  <HBox alignment="CENTER" layoutX="170.0" layoutY="222.0" prefHeight="100.0" prefWidth="200.0" spacing="50.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+                     <children>
+                        <Button fx:id="carthageButton" mnemonicParsing="false" text="Button" />
+                        <Button fx:id="greeceButton" mnemonicParsing="false" text="Button" />
+                        <Button fx:id="romeButton" mnemonicParsing="false" text="Button" />
+                     </children>
+                  </HBox>
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="65.0" layoutY="237.0" prefHeight="48.0" prefWidth="410.0" text="Choose your faction" textAlignment="CENTER" AnchorPane.leftAnchor="65.0" AnchorPane.rightAnchor="65.0" AnchorPane.topAnchor="150.0">
+                     <font>
+                        <Font name="Lato Bold Italic" size="36.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </right>
+</BorderPane>
