@@ -7,10 +7,11 @@ import com.example.edpapp.models.NewGame;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.internal.SessionFactoryImpl;
 
-public class DbConnection {
+public class DbConnection implements IDbConnection {
 
+
+    Configuration configuration;
 
     public void makeConnection() throws ClassNotFoundException {
         String connectionString;
@@ -37,7 +38,13 @@ public class DbConnection {
         Session session = sessionFactory.openSession();
 
         session.beginTransaction();
-        session.save(new NewGame(1,"rome","sandbox", "miasto"));
+        NewGame game = new NewGame();
+
+        game.setTownName("miasto");
+        game.setFaction("rome");
+        game.setLevel("sandbox");
+        session.save(game);
         session.getTransaction().commit();
+        session.close();
     }
 }

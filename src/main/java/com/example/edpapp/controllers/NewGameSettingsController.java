@@ -1,5 +1,11 @@
 package com.example.edpapp.controllers;
 
+import com.example.edpapp.repositories.INewGameRepository;
+import com.example.edpapp.repositories.NewGameRepository;
+import com.example.edpapp.repositories.NewGameRepositoryGuiceModule;
+import com.google.inject.Guice;
+import com.google.inject.Inject;
+import com.google.inject.Injector;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -26,11 +32,14 @@ public class NewGameSettingsController implements Initializable {
     @FXML
     private Button greeksButton;
 
-
     private String[] levels = {"sandbox", "easy", "medium", "hard"};
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        Injector injector = Guice.createInjector(new NewGameRepositoryGuiceModule());
+        NewGameRepository newGameRepository = injector.getInstance(NewGameRepository.class);
+
         levelChoiceBox.setValue("Choose difficulty level");
         levelChoiceBox.getItems().addAll(levels);
 
