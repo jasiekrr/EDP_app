@@ -30,6 +30,6 @@ public class NewGameRepository implements INewGameRepository{
 
     @Override
     public void postNewGame(NewGame newGame) {
-
+        connection.saveNewGame(newGame);
     }
 }

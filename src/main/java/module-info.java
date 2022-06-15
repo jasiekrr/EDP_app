@@ -8,9 +8,10 @@ module com.example.edpapp {
     requires javax.persistence;
     requires java.naming;
     requires jakarta.persistence;
-    requires guice;
+    requires com.google.guice;
 
     opens com.example.edpapp to javafx.fxml;
+    exports com.example.edpapp.repositories to com.google.guice;
     exports com.example.edpapp;
     exports com.example.edpapp.controllers;
     exports com.example.edpapp.models;

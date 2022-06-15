@@ -11,9 +11,9 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
-
 
 <AnchorPane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.edpapp.controllers.NewGameSettingsController">
    <children>
@@ -30,8 +30,8 @@
                         </Text>
                      </children>
                   </VBox>
-                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" text="Back To Main Menu" />
-                  <Button alignment="CENTER" contentDisplay="CENTER" disable="true" mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" text="Start Game" />
+                  <Button fx:id="backToMenuButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onActionBackToMenu" prefHeight="50.0" prefWidth="250.0" text="Back To Main Menu" />
+                  <Button fx:id="startGameButton" alignment="CENTER" contentDisplay="CENTER" disable="true" mnemonicParsing="false" onAction="#onActionStartGameButton" prefHeight="50.0" prefWidth="250.0" text="Start Game" />
                </children>
             </VBox>
          </left>
@@ -43,7 +43,7 @@
                         <Font name="Lato Bold Italic" size="36.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="townNameTextField" prefHeight="26.0" prefWidth="267.0">
+                  <TextField fx:id="townNameTextField" onKeyPressed="#onKeyPressedNameButton" prefHeight="26.0" prefWidth="267.0" promptText="name" text="Whiterun">
                      <font>
                         <Font name="Lato Light" size="36.0" />
                      </font>
@@ -70,22 +70,25 @@
                      <children>
                         <HBox alignment="CENTER" layoutX="10.0" layoutY="235.0" prefHeight="210.0" prefWidth="612.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
                            <children>
-                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="150.0">
+                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="150.0" spacing="10.0">
                                  <children>
                                     <Label alignment="CENTER" contentDisplay="CENTER" text="Rome" />
-                                    <Button fx:id="romeButton" maxHeight="150.0" maxWidth="150.0" minHeight="150.0" minWidth="150.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" />
+                                    <Button fx:id="romeButton" lineSpacing="10.0" maxHeight="150.0" maxWidth="150.0" minHeight="150.0" minWidth="150.0" mnemonicParsing="false" onAction="#onActionRomeClicked" prefHeight="150.0" prefWidth="150.0" />
+                                    <Circle fx:id="romeChooser" fill="#a10000" radius="13.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="5.0" />
                                  </children>
                               </VBox>
-                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="150.0">
+                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="150.0" spacing="10.0">
                                  <children>
                                     <Label text="Carthage" />
-                                    <Button fx:id="carthageButton" contentDisplay="CENTER" maxHeight="150.0" maxWidth="150.0" minHeight="150.0" minWidth="150.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="141.0" />
+                                    <Button fx:id="carthageButton" contentDisplay="CENTER" maxHeight="150.0" maxWidth="150.0" minHeight="150.0" minWidth="150.0" mnemonicParsing="false" onAction="#onActionCarthageClicked" prefHeight="150.0" prefWidth="141.0" />
+                                    <Circle fx:id="carthageChooser" fill="#a10000" radius="13.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="5.0" />
                                  </children>
                               </VBox>
-                              <VBox alignment="CENTER" prefHeight="150.0" prefWidth="150.0">
+                              <VBox alignment="CENTER" prefHeight="150.0" prefWidth="150.0" spacing="10.0">
                                  <children>
                                     <Label text="Greeks" />
-                                    <Button fx:id="greeksButton" maxHeight="150.0" maxWidth="198.0" minHeight="150.0" minWidth="150.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="83.0" />
+                                    <Button fx:id="greeksButton" maxHeight="150.0" maxWidth="198.0" minHeight="150.0" minWidth="150.0" mnemonicParsing="false" onAction="#onActionGreeksClicked" prefHeight="150.0" prefWidth="83.0" />
+                                    <Circle fx:id="greeksChooser" fill="#a10000" radius="13.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="5.0" />
                                  </children>
                               </VBox>
                            </children>

@@ -10,8 +10,22 @@ import org.hibernate.cfg.Configuration;
 
 public class DbConnection implements IDbConnection {
 
-
     Configuration configuration;
+    Session session;
+
+    public DbConnection(){
+        setUp();
+    }
+
+    public void setUp(){
+        configuration = new Configuration();
+        configuration.configure("hibernate.cfg.xml");
+        configuration.addAnnotatedClass(NewGame.class);
+
+        SessionFactory sessionFactory = configuration.buildSessionFactory();
+
+        session = sessionFactory.openSession();
+    }
 
     public void makeConnection() throws ClassNotFoundException {
         String connectionString;
@@ -22,29 +36,19 @@ public class DbConnection implements IDbConnection {
             connection = DriverManager.getConnection(connectionString, "postgres", "password");
             System.out.println("connection created!");
         } catch (SQLException e) {
-            System.out.println("wystapil blad");
+            System.out.println("error occured");
             throw new RuntimeException(e);
         }
 
     }
-    public void connect(){
-
-        Configuration configuration = new Configuration();
-        configuration.configure("hibernate.cfg.xml");
-        configuration.addAnnotatedClass(NewGame.class);
-
-        SessionFactory sessionFactory = configuration.buildSessionFactory();
-
-        Session session = sessionFactory.openSession();
-
-        session.beginTransaction();
-        NewGame game = new NewGame();
-
-        game.setTownName("miasto");
-        game.setFaction("rome");
-        game.setLevel("sandbox");
-        session.save(game);
-        session.getTransaction().commit();
-        session.close();
+    public void saveNewGame(NewGame newGame){
+        try{
+            session.beginTransaction();
+            session.persist(newGame);
+            session.getTransaction().commit();
+            session.close();
+        }catch (Exception ex){
+            System.out.println("Database error");
+        }
     }
 }

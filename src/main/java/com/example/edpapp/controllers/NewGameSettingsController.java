@@ -1,21 +1,33 @@
 package com.example.edpapp.controllers;
 
+import com.example.edpapp.Main;
+import com.example.edpapp.controllers.dto.NewGameDTO;
+import com.example.edpapp.models.NewGame;
 import com.example.edpapp.repositories.INewGameRepository;
 import com.example.edpapp.repositories.NewGameRepository;
 import com.example.edpapp.repositories.NewGameRepositoryGuiceModule;
 import com.google.inject.Guice;
 import com.google.inject.Inject;
 import com.google.inject.Injector;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.shape.Circle;
+import javafx.stage.Stage;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -24,6 +36,13 @@ public class NewGameSettingsController implements Initializable {
     private AnchorPane settingsAnchorPane;
     @FXML
     private ChoiceBox<String> levelChoiceBox;
+    
+    @FXML
+    private Circle romeChooser;
+    @FXML
+    private Circle carthageChooser;
+    @FXML
+    private Circle greeksChooser;
 
     @FXML
     private Button romeButton;
@@ -31,17 +50,35 @@ public class NewGameSettingsController implements Initializable {
     private Button carthageButton;
     @FXML
     private Button greeksButton;
+    @FXML
+    private Button backToMenuButton;
+    @FXML
+    private TextField townNameTextField;
+    @FXML
+    private Button startGameButton;
+
+    private String chosenFaction;
+
+    private NewGameDTO newGameDTO;
+
+    NewGameRepository newGameRepository;
 
     private String[] levels = {"sandbox", "easy", "medium", "hard"};
 
+    public NewGameSettingsController() {
+        newGameDTO = new NewGameDTO();
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        disableAllChoosers();
 
         Injector injector = Guice.createInjector(new NewGameRepositoryGuiceModule());
-        NewGameRepository newGameRepository = injector.getInstance(NewGameRepository.class);
+        newGameRepository = injector.getInstance(NewGameRepository.class);
 
-        levelChoiceBox.setValue("Choose difficulty level");
+        levelChoiceBox.setValue("sandbox");
         levelChoiceBox.getItems().addAll(levels);
+
 
         try {
             loadFactions();
@@ -73,6 +110,75 @@ public class NewGameSettingsController implements Initializable {
         greeceImageView.setPreserveRatio(true);
 
         greeksButton.setGraphic(greeceImageView);
+    }
+    public void onActionBackToMenu(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("MainMenu.fxml"));
 
+        Stage stage = (Stage)((javafx.scene.Node)event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setTitle("Main Menu");
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.show();
+    }
+    public void onActionRomeClicked(ActionEvent event){
+        romeChooser.setVisible(true);
+        carthageChooser.setVisible(false);
+        greeksChooser.setVisible(false);
+
+        checkIfTouched();
+
+        chosenFaction = "rome";
+
+    }
+    public void onActionCarthageClicked(ActionEvent event){
+        romeChooser.setVisible(false);
+        carthageChooser.setVisible(true);
+        greeksChooser.setVisible(false);
+
+        checkIfTouched();
+
+        chosenFaction = "carthage";
+    }
+    public void onActionGreeksClicked(ActionEvent event){
+
+        romeChooser.setVisible(false);
+        carthageChooser.setVisible(false);
+        greeksChooser.setVisible(true);
+
+        checkIfTouched();
+
+        chosenFaction = "greeks";
+    }
+    public void onActionStartGameButton(ActionEvent event){
+        acceptChoice();
+
+        NewGame game = new NewGame();
+        game.setLevel(this.newGameDTO.difficultyLevel);
+        game.setFaction(this.newGameDTO.chosenFaction);
+        game.setTownName(this.newGameDTO.townName);
+
+        newGameRepository.postNewGame(game);
+
+    }
+    public void onKeyPressedNameButton(KeyEvent event){
+        if(event.getCode()== KeyCode.ENTER){
+            this.newGameDTO.townName = townNameTextField.getText();
+        }
+    }
+    public void disableAllChoosers(){
+        romeChooser.setVisible(false);
+        carthageChooser.setVisible(false);
+        greeksChooser.setVisible(false);
+    }
+    public void acceptChoice(){
+        this.newGameDTO.townName = townNameTextField.getText();
+        this.newGameDTO.difficultyLevel = levelChoiceBox.getValue();
+        this.newGameDTO.chosenFaction = chosenFaction;
+    }
+    public void checkIfTouched(){
+        if(romeChooser.isVisible() || carthageChooser.isVisible() || greeksChooser.isVisible()){
+            startGameButton.setDisable(false);
+        }
     }
 }

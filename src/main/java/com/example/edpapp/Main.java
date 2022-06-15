@@ -18,8 +18,6 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException, ClassNotFoundException {
 
-        Injector injector = Guice.createInjector(new NewGameRepositoryGuiceModule());
-
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("mainMenu.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 920, 720);
         stage.setTitle("Sieam");
@@ -27,12 +25,6 @@ public class Main extends Application {
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
-
-
-        DbConnection connector = new DbConnection();
-        connector.connect();
-
-
     }
 
 
