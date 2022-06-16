@@ -5,12 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d7b87f7f-8b48-4caa-8ba0-03d972703881" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/specials/MapCoordinator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/map.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/controllers/GameController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/edpapp/Game.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/barracks.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/blacksmith.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/castle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/grass.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/house1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/house1b.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/house1c.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/edpapp/controllers/NewGameSettingsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/controllers/NewGameSettingsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/edpapp/controllers/dto/NewGameDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/dto/NewGameDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/edpapp/NewGameSettings.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/edpapp/NewGameSettings.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,8 +25,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="FxmlFile" />
         <option value="Interface" />
+        <option value="FxmlFile" />
         <option value="Class" />
       </list>
     </option>
@@ -110,7 +115,8 @@
       <workItem from="1655273004489" duration="3824000" />
       <workItem from="1655278116522" duration="5479000" />
       <workItem from="1655310703669" duration="12476000" />
-      <workItem from="1655365463246" duration="5303000" />
+      <workItem from="1655365463246" duration="12695000" />
+      <workItem from="1655396407952" duration="2471000" />
     </task>
     <task id="LOCAL-00001" summary="Done main menu with exit button action">
       <created>1655065417891</created>
@@ -147,7 +153,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655327707926</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Done Interactive longitude and latitude picker for map and for future weather api">
+      <created>1655371265500</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1655371265500</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -159,6 +172,7 @@
     <MESSAGE value="database created" />
     <MESSAGE value="Dependency injection Controller &lt;- NewGameRepository &lt;- DbConnection" />
     <MESSAGE value="Added connection to database from New Game Controller" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added connection to database from New Game Controller" />
+    <MESSAGE value="Done Interactive longitude and latitude picker for map and for future weather api" />
+    <option name="LAST_COMMIT_MESSAGE" value="Done Interactive longitude and latitude picker for map and for future weather api" />
   </component>
 </project>

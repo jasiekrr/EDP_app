@@ -29,7 +29,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class NewGameSettingsController implements Initializable {
@@ -158,7 +157,7 @@ public class NewGameSettingsController implements Initializable {
 
         chosenFaction = "greeks";
     }
-    public void onActionStartGameButton(ActionEvent event){
+    public void onActionStartGameButton(ActionEvent event) throws IOException {
         acceptChoice();
 
         NewGame game = new NewGame();
@@ -168,6 +167,19 @@ public class NewGameSettingsController implements Initializable {
 
         newGameRepository.postNewGame(game);
 
+        navigateToGame(event);
+
+
+    }
+    public void navigateToGame(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Game.fxml"));
+
+        Stage stage = (Stage)((javafx.scene.Node)event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setTitle("GAME!");
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.show();
     }
     public void onKeyPressedNameButton(KeyEvent event){
         if(event.getCode()== KeyCode.ENTER){
