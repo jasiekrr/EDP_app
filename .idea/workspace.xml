@@ -5,17 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d7b87f7f-8b48-4caa-8ba0-03d972703881" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/controllers/GameController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/edpapp/Game.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/barracks.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/blacksmith.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/castle.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/grass.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/house1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/house1b.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/house1c.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/models/GameStat.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/repositories/IGameStatRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/port.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/wateronly.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/edpapp/controllers/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/controllers/GameController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/edpapp/controllers/NewGameSettingsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/controllers/NewGameSettingsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/edpapp/dto/NewGameDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/dto/NewGameDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/edpapp/models/NewGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/models/NewGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/edpapp/specials/MapCoordinator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/specials/MapCoordinator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/edpapp/Game.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/edpapp/Game.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/edpapp/NewGameSettings.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/edpapp/NewGameSettings.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,13 +39,16 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2AU0F2O7sgXZksq51KzwRlwInbK" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
@@ -52,7 +56,7 @@
     &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
     &quot;last_directory_selection&quot;: &quot;C:/STUDIA/rok3/semestr6/JTP/Lab3/EDPapp/src/main/java/com/example/edpapp&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/STUDIA/rok3/semestr6/EDP/Guice-221.5080.9.zip&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
@@ -116,7 +120,8 @@
       <workItem from="1655278116522" duration="5479000" />
       <workItem from="1655310703669" duration="12476000" />
       <workItem from="1655365463246" duration="12695000" />
-      <workItem from="1655396407952" duration="2471000" />
+      <workItem from="1655396407952" duration="10165000" />
+      <workItem from="1655417310697" duration="1983000" />
     </task>
     <task id="LOCAL-00001" summary="Done main menu with exit button action">
       <created>1655065417891</created>
@@ -160,19 +165,28 @@
       <option name="project" value="LOCAL" />
       <updated>1655371265500</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Game World set with pictures">
+      <created>1655399726740</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1655399726740</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Done main menu with exit button action" />
     <MESSAGE value="Set up connection to postgre SQL" />
     <MESSAGE value="database created" />
     <MESSAGE value="Dependency injection Controller &lt;- NewGameRepository &lt;- DbConnection" />
     <MESSAGE value="Added connection to database from New Game Controller" />
     <MESSAGE value="Done Interactive longitude and latitude picker for map and for future weather api" />
-    <option name="LAST_COMMIT_MESSAGE" value="Done Interactive longitude and latitude picker for map and for future weather api" />
+    <MESSAGE value="Game World set with pictures" />
+    <option name="LAST_COMMIT_MESSAGE" value="Game World set with pictures" />
   </component>
 </project>

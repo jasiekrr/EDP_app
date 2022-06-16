@@ -29,6 +29,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class NewGameSettingsController implements Initializable {
@@ -164,6 +165,8 @@ public class NewGameSettingsController implements Initializable {
         game.setLevel(this.newGameDTO.difficultyLevel);
         game.setFaction(this.newGameDTO.chosenFaction);
         game.setTownName(this.newGameDTO.townName);
+        game.setLocation_y(this.newGameDTO.location_y);
+        game.setLocation_x(this.newGameDTO.location_x);
 
         newGameRepository.postNewGame(game);
 
@@ -180,6 +183,7 @@ public class NewGameSettingsController implements Initializable {
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
+
     }
     public void onKeyPressedNameButton(KeyEvent event){
         if(event.getCode()== KeyCode.ENTER){
@@ -195,6 +199,8 @@ public class NewGameSettingsController implements Initializable {
         this.newGameDTO.townName = townNameTextField.getText();
         this.newGameDTO.difficultyLevel = levelChoiceBox.getValue();
         this.newGameDTO.chosenFaction = chosenFaction;
+        this.newGameDTO.location_y = Double.parseDouble(latitudeText.getText());
+        this.newGameDTO.location_x = Double.parseDouble(longitudeText.getText());
     }
     public void checkIfTouched(){
         if(romeChooser.isVisible() || carthageChooser.isVisible() || greeksChooser.isVisible()){
@@ -204,9 +210,11 @@ public class NewGameSettingsController implements Initializable {
 
     public void onMouseClickedMap(MouseEvent event){
         MapCoordinator mapCoordinator = new MapCoordinator(event.getX(), event.getY());
+        DecimalFormat comaSeparatorFormat = (DecimalFormat)DecimalFormat.getNumberInstance(Locale.ENGLISH);
 
-        latitudeText.setText(new DecimalFormat("#.0#").format(mapCoordinator.calculateY()));
-        longitudeText.setText(new DecimalFormat("#.0#").format(mapCoordinator.calculateX()));
+        latitudeText.setText(comaSeparatorFormat.format(mapCoordinator.calculateY()));
+        longitudeText.setText(comaSeparatorFormat.format(mapCoordinator.calculateX()));
 
     }
+
 }

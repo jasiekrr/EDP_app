@@ -29,10 +29,9 @@ public class MapCoordinator {
         return leftBorder + x * degreesPerPixelX;
 
     }
-    public double calculateY(){
+    public double calculateY() {
         double degreesPerPixelY = Math.abs(topBorder - bottomBorder) / sizeY;
         return topBorder - y * degreesPerPixelY;
-
     }
 
 

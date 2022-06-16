@@ -15,7 +15,6 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="1013.0" prefWidth="953.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.edpapp.controllers.NewGameSettingsController">
    <children>
       <AnchorPane layoutY="-2.0" prefHeight="958.0" prefWidth="942.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -132,8 +131,8 @@
                         </VBox>
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="50.0">
                            <children>
-                              <TextField fx:id="longitudeText" />
-                              <TextField fx:id="latitudeText" />
+                              <TextField fx:id="longitudeText" text="13.3" />
+                              <TextField fx:id="latitudeText" text="41.3" />
                            </children>
                         </VBox>
                      </children>

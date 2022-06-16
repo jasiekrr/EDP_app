@@ -3,10 +3,9 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import jakarta.persistence.*;
 import java.sql.Date;
-import java.text.DateFormat;
 
 @Entity
-@Table(name = "NewGame")
+@Table(name = "newgame")
 public class NewGame {
 
     @Id
@@ -18,6 +17,8 @@ public class NewGame {
     private String faction;
     private String level;
     private String townName;
+    private double location_y;
+    private double location_x;
 
     public NewGame() {
 
@@ -29,6 +30,30 @@ public class NewGame {
         this.id = id;
     }
 
+
+    public Date getCreatedOn() {
+        return createdOn;
+    }
+
+    public void setCreatedOn(Date createdOn) {
+        this.createdOn = createdOn;
+    }
+
+    public double getLocation_y() {
+        return location_y;
+    }
+
+    public void setLocation_y(double latitude) {
+        this.location_y = latitude;
+    }
+
+    public double getLocation_x() {
+        return location_x;
+    }
+
+    public void setLocation_x(double longitude) {
+        this.location_x = longitude;
+    }
 
     public int getId() {
         return id;
