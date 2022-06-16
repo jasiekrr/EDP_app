@@ -4,16 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d7b87f7f-8b48-4caa-8ba0-03d972703881" name="Changes" comment="Dependency injection Controller &lt;- NewGameRepository &lt;- DbConnection">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/controllers/dto/NewGameDTO.java" afterDir="false" />
+    <list default="true" id="d7b87f7f-8b48-4caa-8ba0-03d972703881" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/specials/MapCoordinator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/map.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/edpapp/DbConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/DbConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/edpapp/IDbConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/IDbConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/edpapp/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/edpapp/controllers/NewGameSettingsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/controllers/NewGameSettingsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/edpapp/repositories/NewGameRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/repositories/NewGameRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/edpapp/controllers/dto/NewGameDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/dto/NewGameDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/edpapp/NewGameSettings.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/edpapp/NewGameSettings.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -73,6 +69,9 @@
       <recent name="C:\STUDIA\rok3\semestr6\JTP\Lab3\EDPapp\src\main\java\com\example\edpapp" />
       <recent name="C:\STUDIA\rok3\semestr6\JTP\Lab3\EDPapp\src\main\resources" />
     </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.example.edpapp" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -110,7 +109,8 @@
       <workItem from="1655232567975" duration="11738000" />
       <workItem from="1655273004489" duration="3824000" />
       <workItem from="1655278116522" duration="5479000" />
-      <workItem from="1655310703669" duration="11750000" />
+      <workItem from="1655310703669" duration="12476000" />
+      <workItem from="1655365463246" duration="5303000" />
     </task>
     <task id="LOCAL-00001" summary="Done main menu with exit button action">
       <created>1655065417891</created>
@@ -140,7 +140,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655284242136</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Added connection to database from New Game Controller">
+      <created>1655327707926</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1655327707926</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -151,6 +158,7 @@
     <MESSAGE value="Set up connection to postgre SQL" />
     <MESSAGE value="database created" />
     <MESSAGE value="Dependency injection Controller &lt;- NewGameRepository &lt;- DbConnection" />
-    <option name="LAST_COMMIT_MESSAGE" value="Dependency injection Controller &lt;- NewGameRepository &lt;- DbConnection" />
+    <MESSAGE value="Added connection to database from New Game Controller" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added connection to database from New Game Controller" />
   </component>
 </project>

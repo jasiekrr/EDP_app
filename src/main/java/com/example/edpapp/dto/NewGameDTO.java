@@ -1,4 +1,4 @@
-package com.example.edpapp.controllers.dto;
+package com.example.edpapp.dto;
 
 public class NewGameDTO {
     public String townName;

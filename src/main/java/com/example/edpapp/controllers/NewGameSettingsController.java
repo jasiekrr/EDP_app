@@ -1,13 +1,12 @@
 package com.example.edpapp.controllers;
 
 import com.example.edpapp.Main;
-import com.example.edpapp.controllers.dto.NewGameDTO;
+import com.example.edpapp.dto.NewGameDTO;
 import com.example.edpapp.models.NewGame;
-import com.example.edpapp.repositories.INewGameRepository;
 import com.example.edpapp.repositories.NewGameRepository;
 import com.example.edpapp.repositories.NewGameRepositoryGuiceModule;
+import com.example.edpapp.specials.MapCoordinator;
 import com.google.inject.Guice;
-import com.google.inject.Inject;
 import com.google.inject.Injector;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -21,14 +20,16 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
-
+import java.text.DecimalFormat;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class NewGameSettingsController implements Initializable {
@@ -56,6 +57,13 @@ public class NewGameSettingsController implements Initializable {
     private TextField townNameTextField;
     @FXML
     private Button startGameButton;
+    @FXML
+    private TextField longitudeText;
+    @FXML
+    private TextField latitudeText;
+    @FXML
+    private ImageView map;
+
 
     private String chosenFaction;
 
@@ -180,5 +188,13 @@ public class NewGameSettingsController implements Initializable {
         if(romeChooser.isVisible() || carthageChooser.isVisible() || greeksChooser.isVisible()){
             startGameButton.setDisable(false);
         }
+    }
+
+    public void onMouseClickedMap(MouseEvent event){
+        MapCoordinator mapCoordinator = new MapCoordinator(event.getX(), event.getY());
+
+        latitudeText.setText(new DecimalFormat("#.0#").format(mapCoordinator.calculateY()));
+        longitudeText.setText(new DecimalFormat("#.0#").format(mapCoordinator.calculateX()));
+
     }
 }
