@@ -5,18 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d7b87f7f-8b48-4caa-8ba0-03d972703881" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/models/GameStat.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/repositories/IGameStatRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/port.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/wateronly.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/food.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/gold.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/heavy.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/hoplite.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/iron.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/legionary.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/light.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/medium.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/sacredBand.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/stone.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/wood.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/workers.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/edpapp/DbConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/DbConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/edpapp/IDbConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/IDbConnection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/edpapp/controllers/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/controllers/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/edpapp/controllers/NewGameSettingsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/controllers/NewGameSettingsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/edpapp/dto/NewGameDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/dto/NewGameDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/edpapp/models/NewGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/models/NewGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/edpapp/specials/MapCoordinator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/specials/MapCoordinator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/edpapp/repositories/NewGameRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/repositories/NewGameRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/edpapp/Game.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/edpapp/Game.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/edpapp/NewGameSettings.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/edpapp/NewGameSettings.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,7 +127,9 @@
       <workItem from="1655310703669" duration="12476000" />
       <workItem from="1655365463246" duration="12695000" />
       <workItem from="1655396407952" duration="10165000" />
-      <workItem from="1655417310697" duration="1983000" />
+      <workItem from="1655417310697" duration="2046000" />
+      <workItem from="1655452592673" duration="2887000" />
+      <workItem from="1655474613809" duration="5874000" />
     </task>
     <task id="LOCAL-00001" summary="Done main menu with exit button action">
       <created>1655065417891</created>
@@ -172,7 +180,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655399726740</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="extended database by adding next table and setting up constraints">
+      <created>1655419357252</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1655419357252</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -187,6 +202,7 @@
     <MESSAGE value="Added connection to database from New Game Controller" />
     <MESSAGE value="Done Interactive longitude and latitude picker for map and for future weather api" />
     <MESSAGE value="Game World set with pictures" />
-    <option name="LAST_COMMIT_MESSAGE" value="Game World set with pictures" />
+    <MESSAGE value="extended database by adding next table and setting up constraints" />
+    <option name="LAST_COMMIT_MESSAGE" value="extended database by adding next table and setting up constraints" />
   </component>
 </project>

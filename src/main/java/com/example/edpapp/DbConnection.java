@@ -51,4 +51,16 @@ public class DbConnection implements IDbConnection {
             System.out.println("Database error");
         }
     }
+
+    @Override
+    public NewGame getLastNewGame() {
+        session.beginTransaction();
+        NewGame newGame = (NewGame) session.createQuery("from NewGame order by id desc").setMaxResults(1).uniqueResult();
+        session.getTransaction().commit();
+        session.close();
+        System.out.println("newGame: " + newGame.toString());
+        return newGame;
+
+
+    }
 }

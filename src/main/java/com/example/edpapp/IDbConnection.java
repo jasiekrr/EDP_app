@@ -6,4 +6,6 @@ public interface IDbConnection {
     public void setUp();
     public void makeConnection() throws ClassNotFoundException;
     public void saveNewGame(NewGame newGame);
+
+    NewGame getLastNewGame();
 }

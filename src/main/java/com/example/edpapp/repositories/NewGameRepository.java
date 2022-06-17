@@ -15,7 +15,7 @@ public class NewGameRepository implements INewGameRepository{
 
     @Override
     public NewGame getLastNewGame() {
-        return null;
+        return connection.getLastNewGame();
     }
 
     @Override
