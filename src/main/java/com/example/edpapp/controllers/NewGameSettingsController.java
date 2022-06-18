@@ -2,9 +2,11 @@ package com.example.edpapp.controllers;
 
 import com.example.edpapp.Main;
 import com.example.edpapp.dto.NewGameDTO;
+import com.example.edpapp.models.GameStat;
 import com.example.edpapp.models.NewGame;
 import com.example.edpapp.repositories.NewGameRepository;
 import com.example.edpapp.repositories.NewGameRepositoryGuiceModule;
+import com.example.edpapp.specials.GameStartResources;
 import com.example.edpapp.specials.MapCoordinator;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
@@ -33,6 +35,7 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class NewGameSettingsController implements Initializable {
+    private NewGame newGame;
     @FXML
     private AnchorPane settingsAnchorPane;
     @FXML
@@ -83,7 +86,6 @@ public class NewGameSettingsController implements Initializable {
 
         Injector injector = Guice.createInjector(new NewGameRepositoryGuiceModule());
         newGameRepository = injector.getInstance(NewGameRepository.class);
-
         levelChoiceBox.setValue("sandbox");
         levelChoiceBox.getItems().addAll(levels);
 
@@ -169,16 +171,17 @@ public class NewGameSettingsController implements Initializable {
         game.setLocation_x(this.newGameDTO.location_x);
 
         newGameRepository.postNewGame(game);
+        this.newGame = game;
 
         navigateToGame(event);
-
-
     }
     public void navigateToGame(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Game.fxml"));
 
         Stage stage = (Stage)((javafx.scene.Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(fxmlLoader.load());
+        GameController controller = fxmlLoader.getController();
+        controller.setGame(loadNewGame(newGame));
         stage.setTitle("GAME!");
         stage.setScene(scene);
         stage.setResizable(false);
@@ -216,5 +219,13 @@ public class NewGameSettingsController implements Initializable {
         longitudeText.setText(comaSeparatorFormat.format(mapCoordinator.calculateX()));
 
     }
+    public GameStat loadNewGame(NewGame newGame){
+        Injector injector = Guice.createInjector(new NewGameRepositoryGuiceModule());
+        GameStartResources gameStartResources = injector.getInstance(GameStartResources.class);
+
+        return gameStartResources.getStartResources(newGame.getLevel(), newGame.getFaction());
+    }
+
+
 
 }

@@ -11,23 +11,48 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.effect.Glow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
-import java.util.Objects;
 import java.util.ResourceBundle;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class GameController implements Initializable {
 
+    @FXML
+    public ImageView house1;
+    @FXML
+    public Group housingGroup;
+    @FXML
+    public Group farmGroup;
+    @FXML
+    public ImageView port;
+    @FXML
+    public Group towersgroup;
+    @FXML
+    public ImageView barracks;
+    @FXML
+    public ImageView mine;
+    @FXML
+    public ImageView blacksmith;
+    @FXML
+    public ImageView lumberjack;
     private GameStat gameStat;
     private NewGame newGame;
     @FXML
@@ -42,6 +67,14 @@ public class GameController implements Initializable {
     private Label specialUnitName;
     @FXML
     private ImageView specialUnitIcon;
+    @FXML
+    private Label foodLabel;
+    @FXML
+    private Label woodLabel;
+    @FXML
+    private Label stoneLabel;
+    @FXML
+    private Label goldLabel;
 
 
     public void onActionSaveGame(ActionEvent event){
@@ -79,21 +112,88 @@ public class GameController implements Initializable {
             case "greeks" -> specialUnitName.setText("Hoplite Phalanx");
         }
     }
-    public void loadSpecialUnitImage(){
-        System.out.println(newGame.getFaction());
+    public void loadSpecialUnitImage() throws FileNotFoundException {
+
+        InputStream stream;
+
         switch (newGame.getFaction()) {
-            case "rome" -> specialUnitIcon.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("src/main/resources/icons/legionary.png"))));
-            case "carthage" -> specialUnitIcon.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("src/main/resources/icons/sacredBand.png"))));
-            case "greeks" -> specialUnitIcon.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("src/main/resources/icons/hoplitePhalanx.png"))));
+            case "rome" -> {
+                stream = new FileInputStream("src/main/resources/icons/legionary.png");
+                specialUnitIcon.setImage(new Image(stream));
+            }
+            case "carthage" -> {
+                stream = new FileInputStream("src/main/resources/icons/sacredBand.png");
+                specialUnitIcon.setImage(new Image(stream));
+            }
+            case "greeks" -> {
+                stream = new FileInputStream("src/main/resources/icons/hoplite.png");
+                specialUnitIcon.setImage(new Image(stream));
+            }
         }
-
     }
-
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         newGame = uploadNewGame();
+
         loadSpecialUnitLabel();
-        loadSpecialUnitImage();
+        try {
+            loadSpecialUnitImage();
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+    public void setGame(GameStat loadNewGame) {
+        this.gameStat = loadNewGame;
+        initBuildings();
+
+
+        unleashTimer();
+    }
+    public void unleashTimer(){
+        Timer timer = new Timer();
+        timer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                updateResources();
+                updateDisplay();
+            }
+        }, 0, 10000);
+    }
+    public void updateDisplay(){
+        foodLabel.setText(String.valueOf(gameStat.getFood()));
+        woodLabel.setText(String.valueOf(gameStat.getWood()));
+        stoneLabel.setText(String.valueOf(gameStat.getStone()));
+        goldLabel.setText(String.valueOf(gameStat.getGold()));
+    }
+    public void updateResources() {
+        gameStat.setFood(gameStat.getFood() + gameStat.getFoodperminute() / 6);
+        gameStat.setWood(gameStat.getWood() + gameStat.getWoodperminute() / 6);
+        gameStat.setStone(gameStat.getStone() + gameStat.getStoneperminute() / 6);
+        gameStat.setGold(gameStat.getGold() + gameStat.getGoldperminute() / 6);
+    }
+    public void onMouseHovered(MouseEvent event) {
+        ImageView imageView = (ImageView) event.getSource();
+        imageView.setEffect(new Glow(0.9));
+        imageView.setOnMouseExited(event1 -> imageView.setEffect(new Glow(0.5)));
+    }
+    public void initBuildings(){
+        for(int i = 0; i < gameStat.getHousinglevel(); i++){
+            housingGroup.getChildren().get(i).setVisible(true);
+        }
+        castle.setVisible(true);
+        for(int i = 0; i < gameStat.getFarmlevel(); i++){
+            farmGroup.getChildren().get(i).setVisible(true);
+        }
+        port.setVisible(gameStat.getPortlevel() != 0);
+        for(int i = 0; i < gameStat.getWatchtowerlevel(); i++){
+            towersgroup.getChildren().get(i).setVisible(true);
+        }
+        barracks.setVisible(gameStat.getBarrackslevel() != 0);
+        lumberjack.setVisible(gameStat.getLumberjacklevel() != 0);
+        mine.setVisible(gameStat.getMinelevel() != 0);
+        blacksmith.setVisible(gameStat.getBlacksmithlevel() != 0);
+
+
     }
 }

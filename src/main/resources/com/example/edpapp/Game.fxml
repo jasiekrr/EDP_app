@@ -16,6 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.Group?>
 <AnchorPane fx:id="gamePane" prefHeight="815.0" prefWidth="1229.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.edpapp.controllers.GameController">
    <HBox prefHeight="815.0" prefWidth="1229.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <children>
@@ -148,7 +149,7 @@
                   </HBox>
                     <HBox prefHeight="100.0" prefWidth="200.0">
                         <children>
-                            <ImageView>
+                            <ImageView fitHeight="32.0" fitWidth="32.0">
                             <image>
                                 <Image url="@../../../icons/light.png" />
                             </image>
@@ -162,7 +163,7 @@
                     </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <ImageView>
+                        <ImageView fitHeight="32.0" fitWidth="32.0">
                            <image>
                               <Image url="@../../../icons/medium.png" />
                            </image>
@@ -176,7 +177,7 @@
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <ImageView>
+                        <ImageView fitHeight="32.0" fitWidth="32.0">
                            <image>
                               <Image url="@../../../icons/heavy.png" />
                            </image>
@@ -202,7 +203,7 @@
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <ImageView fx:id="specialUnitIcon">
+                        <ImageView fx:id="specialUnitIcon" fitHeight="32.0" fitWidth="32.0">
                            <image>
                               <Image url="@../../../icons/heavy.png" />
                            </image>
@@ -214,9 +215,6 @@
                         </Label>
                      </children>
                   </HBox>
-
-
-
                </VBox>
             </children>
          </AnchorPane>
@@ -267,23 +265,193 @@
                </GridPane>
                <AnchorPane prefHeight="200.0" prefWidth="200.0">
                   <children>
-                     <ImageView fx:id="house1" fitHeight="80.0" fitWidth="101.0" layoutX="801.0" layoutY="370.0">
+                     <ImageView fx:id="lumberjack" fitWidth="101.0" layoutX="283.0" layoutY="58.0" visible="false" onMouseMoved="#onMouseHovered">
                         <image>
-                           <Image url="@../../../icons/house1.png" />
+                           <Image url="@../../../icons/house1b.png" />
                         </image>
                         <effect>
                            <Glow level="0.59" />
                         </effect>
                      </ImageView>
-                     <ImageView fitHeight="80.0" fitWidth="101.0" layoutX="823.0" layoutY="419.0">
-                        <image>
-                           <Image url="@../../../icons/house1.png" />
-                        </image>
-                        <effect>
-                           <Glow level="0.59" />
-                        </effect>
-                     </ImageView>
-                     <ImageView fx:id="castle" fitHeight="168.0" fitWidth="200.0" layoutX="460.0" layoutY="240.0">
+                     <Group fx:id="housingGroup">
+                        <ImageView fx:id="house1" fitHeight="80.0" fitWidth="101.0" layoutX="801.0" layoutY="370.0" visible="false" onMouseMoved="#onMouseHovered">
+                           <image>
+                              <Image url="@../../../icons/house1.png" />
+                           </image>
+                           <effect>
+                              <Glow level="0.59" />
+                           </effect>
+                        </ImageView>
+                        <ImageView fitHeight="80.0" fitWidth="101.0" layoutX="823.0" layoutY="419.0" visible="false" onMouseMoved="#onMouseHovered">
+                           <image>
+                              <Image url="@../../../icons/house1.png" />
+                           </image>
+                           <effect>
+                              <Glow level="0.59" />
+                           </effect>
+                        </ImageView>
+                        <ImageView fitHeight="80.0" fitWidth="101.0" layoutX="719.0" layoutY="375.0" visible="false" onMouseMoved="#onMouseHovered">
+                           <image>
+                              <Image url="@../../../icons/house1.png" />
+                           </image>
+                           <effect>
+                              <Glow level="0.59" />
+                           </effect>
+                        </ImageView>
+                        <ImageView fitHeight="80.0" fitWidth="101.0" layoutX="741.0" layoutY="424.0" visible="false" onMouseMoved="#onMouseHovered">
+                           <image>
+                              <Image url="@../../../icons/house1.png" />
+                           </image>
+                           <effect>
+                              <Glow level="0.59" />
+                           </effect>
+                        </ImageView>
+                        <ImageView fitHeight="80.0" fitWidth="101.0" layoutX="104.0" layoutY="321.0" visible="false" onMouseMoved="#onMouseHovered">
+                           <image>
+                              <Image url="@../../../icons/house1b.png" />
+                           </image>
+                           <effect>
+                              <Glow level="0.59" />
+                           </effect>
+                        </ImageView>
+                        <ImageView fitHeight="67.0" fitWidth="82.0" layoutX="734.0" layoutY="323.0" visible="false" onMouseMoved="#onMouseHovered">
+                           <image>
+                              <Image url="@../../../icons/house1c.png" />
+                           </image>
+                           <effect>
+                              <Glow level="0.59" />
+                           </effect>
+                        </ImageView>
+                        <ImageView fitHeight="67.0" fitWidth="82.0" layoutX="185.0" layoutY="269.0" visible="false" onMouseMoved="#onMouseHovered">
+                           <image>
+                              <Image url="@../../../icons/house1c.png" />
+                           </image>
+                           <effect>
+                              <Glow level="0.59" />
+                           </effect>
+                        </ImageView>
+                        <ImageView fitHeight="67.0" fitWidth="82.0" layoutX="793.0" layoutY="471.0" visible="false" onMouseMoved="#onMouseHovered">
+                           <image>
+                              <Image url="@../../../icons/house1c.png" />
+                           </image>
+                           <effect>
+                              <Glow level="0.59" />
+                           </effect>
+                        </ImageView>
+                        <ImageView fitHeight="80.0" fitWidth="101.0" layoutX="439.0" layoutY="488.0" visible="false" onMouseMoved="#onMouseHovered">
+                           <image>
+                              <Image url="@../../../icons/house1.png" />
+                           </image>
+                           <effect>
+                              <Glow level="0.59" />
+                           </effect>
+                        </ImageView>
+                        <ImageView fitHeight="67.0" fitWidth="82.0" layoutX="308.0" layoutY="438.0" visible="false" onMouseMoved="#onMouseHovered">
+                           <image>
+                              <Image url="@../../../icons/house1c.png" />
+                           </image>
+                           <effect>
+                              <Glow level="0.59" />
+                           </effect>
+                        </ImageView>
+                        <ImageView fitHeight="80.0" fitWidth="101.0" layoutX="349.0" layoutY="231.0" visible="false" onMouseMoved="#onMouseHovered">
+                           <image>
+                              <Image url="@../../../icons/house1.png" />
+                           </image>
+                           <effect>
+                              <Glow level="0.59" />
+                           </effect>
+                        </ImageView>
+                        <ImageView fitHeight="67.0" fitWidth="82.0" layoutX="693.0" layoutY="253.0" visible="false" onMouseMoved="#onMouseHovered">
+                           <image>
+                              <Image url="@../../../icons/house1c.png" />
+                           </image>
+                           <effect>
+                              <Glow level="0.59" />
+                           </effect>
+                        </ImageView>
+                        <ImageView fitHeight="67.0" fitWidth="82.0" layoutX="283.0" layoutY="236.0" visible="false" onMouseMoved="#onMouseHovered">
+                           <image>
+                              <Image url="@../../../icons/house1c.png" />
+                           </image>
+                           <effect>
+                              <Glow level="0.59" />
+                           </effect>
+                        </ImageView>
+                        <ImageView fitHeight="67.0" fitWidth="82.0" layoutX="857.0" layoutY="487.0" visible="false" onMouseMoved="#onMouseHovered">
+                           <image>
+                              <Image url="@../../../icons/house1c.png" />
+                           </image>
+                           <effect>
+                              <Glow level="0.59" />
+                           </effect>
+                        </ImageView>
+                        <ImageView fitHeight="67.0" fitWidth="82.0" layoutX="833.0" layoutY="303.0" visible="false" onMouseMoved="#onMouseHovered">
+                           <image>
+                              <Image url="@../../../icons/house1c.png" />
+                           </image>
+                           <effect>
+                              <Glow level="0.59" />
+                           </effect>
+                        </ImageView>
+                        <ImageView fitHeight="67.0" fitWidth="82.0" layoutX="538.0" layoutY="146.0" visible="false" onMouseMoved="#onMouseHovered">
+                           <image>
+                              <Image url="@../../../icons/house1c.png" />
+                           </image>
+                           <effect>
+                              <Glow level="0.59" />
+                           </effect>
+                        </ImageView>
+                        <ImageView fitHeight="80.0" fitWidth="101.0" layoutX="53.0" layoutY="582.0" visible="false" onMouseMoved="#onMouseHovered">
+                           <image>
+                              <Image url="@../../../icons/house1b.png" />
+                           </image>
+                           <effect>
+                              <Glow level="0.59" />
+                           </effect>
+                        </ImageView>
+                        <ImageView fitHeight="80.0" fitWidth="101.0" layoutX="86.0" layoutY="635.0" visible="false" onMouseMoved="#onMouseHovered">
+                           <image>
+                              <Image url="@../../../icons/house1.png" />
+                           </image>
+                           <effect>
+                              <Glow level="0.59" />
+                           </effect>
+                        </ImageView>
+                        <ImageView fitHeight="67.0" fitWidth="82.0" layoutX="331.0" layoutY="668.0" visible="false" onMouseMoved="#onMouseHovered">
+                           <image>
+                              <Image url="@../../../icons/house1c.png" />
+                           </image>
+                           <effect>
+                              <Glow level="0.59" />
+                           </effect>
+                        </ImageView>
+                        <ImageView fitHeight="80.0" fitWidth="101.0" layoutX="175.0" layoutY="651.0" visible="false" onMouseMoved="#onMouseHovered">
+                           <image>
+                              <Image url="@../../../icons/house1b.png" />
+                           </image>
+                           <effect>
+                              <Glow level="0.59" />
+                           </effect>
+                        </ImageView>
+                        <ImageView fitHeight="80.0" fitWidth="101.0" layoutX="217.0" layoutY="671.0" visible="false" onMouseMoved="#onMouseHovered">
+                           <image>
+                              <Image url="@../../../icons/house1.png" />
+                           </image>
+                           <effect>
+                              <Glow level="0.59" />
+                           </effect>
+                        </ImageView>
+                        <ImageView fitHeight="67.0" fitWidth="82.0" layoutX="141.0" layoutY="613.0" visible="false" onMouseMoved="#onMouseHovered">
+                           <image>
+                              <Image url="@../../../icons/house1c.png" />
+                           </image>
+                           <effect>
+                              <Glow level="0.59" />
+                           </effect>
+                        </ImageView>
+                     </Group>
+                     <ImageView fx:id="castle" fitHeight="168.0" fitWidth="200.0" layoutX="460.0" layoutY="240.0"  visible="false" onMouseMoved="#onMouseHovered">
                         <image>
                            <Image url="@../../../icons/castle.png" />
                         </image>
@@ -291,30 +459,48 @@
                            <Glow level="0.59" />
                         </effect>
                      </ImageView>
-                     <ImageView layoutX="515.0" layoutY="507.0">
-                        <image>
-                           <Image url="@../../../icons/farm.png" />
-                        </image>
-                        <effect>
-                           <Glow level="0.59" />
-                        </effect>
-                     </ImageView>
-                     <ImageView layoutX="570.0" layoutY="507.0">
-                        <image>
-                           <Image url="@../../../icons/herbary.png" />
-                        </image>
-                        <effect>
-                           <Glow level="0.59" />
-                        </effect>
-                     </ImageView>
-                     <ImageView layoutX="670.0" layoutY="459.0">
-                        <image>
-                           <Image url="@../../../icons/herbary.png" />
-                        </image>
-                        <effect>
-                           <Glow level="0.59" />
-                        </effect>
-                     </ImageView>
+                     <Group fx:id="farmGroup">
+                        <ImageView layoutX="515.0" layoutY="507.0" visible="false" onMouseMoved="#onMouseHovered">
+                           <image>
+                              <Image url="@../../../icons/farm.png" />
+                           </image>
+                           <effect>
+                              <Glow level="0.59" />
+                           </effect>
+                        </ImageView>
+                        <ImageView layoutX="570.0" layoutY="507.0" visible="false">
+                           <image>
+                              <Image url="@../../../icons/herbary.png" />
+                           </image>
+                           <effect>
+                              <Glow level="0.59" />
+                           </effect>
+                        </ImageView>
+                        <ImageView layoutX="670.0" layoutY="459.0" visible="false">
+                           <image>
+                              <Image url="@../../../icons/herbary.png" />
+                           </image>
+                           <effect>
+                              <Glow level="0.59" />
+                           </effect>
+                        </ImageView>
+                        <ImageView layoutX="469.0" layoutY="562.0" visible="false">
+                           <image>
+                              <Image url="@../../../icons/herbary.png" />
+                           </image>
+                           <effect>
+                              <Glow level="0.59" />
+                           </effect>
+                        </ImageView>
+                        <ImageView layoutX="639.0" layoutY="607.0" visible="false">
+                           <image>
+                              <Image url="@../../../icons/herbary.png" />
+                           </image>
+                           <effect>
+                              <Glow level="0.59" />
+                           </effect>
+                        </ImageView>
+                     </Group>
                      <ImageView fitHeight="87.0" fitWidth="82.0" layoutX="619.0" layoutY="528.0">
                         <image>
                            <Image url="@../../../icons/tree.png" />
@@ -467,55 +653,33 @@
                            <Glow level="0.59" />
                         </effect>
                      </ImageView>
-                     <ImageView layoutX="469.0" layoutY="562.0">
-                        <image>
-                           <Image url="@../../../icons/herbary.png" />
-                        </image>
-                        <effect>
-                           <Glow level="0.59" />
-                        </effect>
-                     </ImageView>
-                     <ImageView layoutX="639.0" layoutY="607.0">
-                        <image>
-                           <Image url="@../../../icons/herbary.png" />
-                        </image>
-                        <effect>
-                           <Glow level="0.59" />
-                        </effect>
-                     </ImageView>
-                     <ImageView fitHeight="80.0" fitWidth="101.0" layoutX="719.0" layoutY="375.0">
-                        <image>
-                           <Image url="@../../../icons/house1.png" />
-                        </image>
-                        <effect>
-                           <Glow level="0.59" />
-                        </effect>
-                     </ImageView>
-                     <ImageView fitHeight="87.0" fitWidth="82.0" layoutX="875.0" layoutY="146.0">
-                        <image>
-                           <Image url="@../../../icons/tower1.png" />
-                        </image>
-                        <effect>
-                           <Glow level="0.59" />
-                        </effect>
-                     </ImageView>
-                     <ImageView fitHeight="87.0" fitWidth="82.0" layoutX="856.0" layoutY="667.0">
-                        <image>
-                           <Image url="@../../../icons/tower1.png" />
-                        </image>
-                        <effect>
-                           <Glow level="0.59" />
-                        </effect>
-                     </ImageView>
-                     <ImageView fitHeight="87.0" fitWidth="82.0" layoutX="18.0" layoutY="269.0">
-                        <image>
-                           <Image url="@../../../icons/tower1.png" />
-                        </image>
-                        <effect>
-                           <Glow level="0.59" />
-                        </effect>
-                     </ImageView>
-                     <ImageView fitHeight="103.0" fitWidth="128.0" layoutX="298.0" layoutY="509.0">
+                     <Group fx:id="towersgroup">
+                        <ImageView fitHeight="87.0" fitWidth="82.0" layoutX="875.0" layoutY="146.0" visible="false">
+                           <image>
+                              <Image url="@../../../icons/tower1.png" />
+                           </image>
+                           <effect>
+                              <Glow level="0.59" />
+                           </effect>
+                        </ImageView>
+                        <ImageView fitHeight="87.0" fitWidth="82.0" layoutX="856.0" layoutY="667.0" visible="false">
+                           <image>
+                              <Image url="@../../../icons/tower1.png" />
+                           </image>
+                           <effect>
+                              <Glow level="0.59" />
+                           </effect>
+                        </ImageView>
+                        <ImageView fitHeight="87.0" fitWidth="82.0" layoutX="18.0" layoutY="269.0" visible="false">
+                           <image>
+                              <Image url="@../../../icons/tower1.png" />
+                           </image>
+                           <effect>
+                              <Glow level="0.59" />
+                           </effect>
+                        </ImageView>
+                     </Group>
+                     <ImageView fx:id="barracks" fitHeight="103.0" fitWidth="128.0" layoutX="298.0" layoutY="509.0" visible="false" onMouseMoved="#onMouseHovered">
                         <image>
                            <Image url="@../../../icons/barracks.png" />
                         </image>
@@ -523,15 +687,8 @@
                            <Glow level="0.59" />
                         </effect>
                      </ImageView>
-                     <ImageView fitHeight="80.0" fitWidth="101.0" layoutX="741.0" layoutY="424.0">
-                        <image>
-                           <Image url="@../../../icons/house1.png" />
-                        </image>
-                        <effect>
-                           <Glow level="0.59" />
-                        </effect>
-                     </ImageView>
-                     <ImageView fitHeight="87.0" fitWidth="101.0" layoutX="194.0" layoutY="393.0">
+
+                     <ImageView fx:id="blacksmith" fitHeight="87.0" fitWidth="101.0" layoutX="194.0" layoutY="393.0" visible="false" onMouseMoved="#onMouseHovered">
                         <image>
                            <Image url="@../../../icons/blacksmith.png" />
                         </image>
@@ -539,31 +696,8 @@
                            <Glow level="0.59" />
                         </effect>
                      </ImageView>
-                     <ImageView fitHeight="80.0" fitWidth="101.0" layoutX="104.0" layoutY="321.0">
-                        <image>
-                           <Image url="@../../../icons/house1b.png" />
-                        </image>
-                        <effect>
-                           <Glow level="0.59" />
-                        </effect>
-                     </ImageView>
-                     <ImageView fitHeight="67.0" fitWidth="82.0" layoutX="734.0" layoutY="323.0">
-                        <image>
-                           <Image url="@../../../icons/house1c.png" />
-                        </image>
-                        <effect>
-                           <Glow level="0.59" />
-                        </effect>
-                     </ImageView>
-                     <ImageView fitHeight="95.0" fitWidth="101.0" layoutX="283.0" layoutY="58.0">
-                        <image>
-                           <Image url="@../../../icons/house1b.png" />
-                        </image>
-                        <effect>
-                           <Glow level="0.59" />
-                        </effect>
-                     </ImageView>
-                     <ImageView fitHeight="87.0" fitWidth="82.0" layoutX="336.0" layoutY="31.0">
+
+                     <ImageView fitHeight="87.0" fitWidth="82.0" layoutX="336.0" layoutY="31.0" visible="false">
                         <image>
                            <Image url="@../../../icons/tree.png" />
                         </image>
@@ -579,89 +713,10 @@
                            <Glow level="0.59" />
                         </effect>
                      </ImageView>
-                     <ImageView fitHeight="67.0" fitWidth="82.0" layoutX="185.0" layoutY="269.0">
-                        <image>
-                           <Image url="@../../../icons/house1c.png" />
-                        </image>
-                        <effect>
-                           <Glow level="0.59" />
-                        </effect>
-                     </ImageView>
-                     <ImageView fitHeight="67.0" fitWidth="82.0" layoutX="793.0" layoutY="471.0">
-                        <image>
-                           <Image url="@../../../icons/house1c.png" />
-                        </image>
-                        <effect>
-                           <Glow level="0.59" />
-                        </effect>
-                     </ImageView>
-                     <ImageView fitHeight="80.0" fitWidth="101.0" layoutX="439.0" layoutY="488.0">
-                        <image>
-                           <Image url="@../../../icons/house1.png" />
-                        </image>
-                        <effect>
-                           <Glow level="0.59" />
-                        </effect>
-                     </ImageView>
-                     <ImageView fitHeight="67.0" fitWidth="82.0" layoutX="308.0" layoutY="438.0">
-                        <image>
-                           <Image url="@../../../icons/house1c.png" />
-                        </image>
-                        <effect>
-                           <Glow level="0.59" />
-                        </effect>
-                     </ImageView>
-                     <ImageView fitHeight="80.0" fitWidth="101.0" layoutX="349.0" layoutY="231.0">
-                        <image>
-                           <Image url="@../../../icons/house1.png" />
-                        </image>
-                        <effect>
-                           <Glow level="0.59" />
-                        </effect>
-                     </ImageView>
-                     <ImageView fitHeight="67.0" fitWidth="82.0" layoutX="693.0" layoutY="253.0">
-                        <image>
-                           <Image url="@../../../icons/house1c.png" />
-                        </image>
-                        <effect>
-                           <Glow level="0.59" />
-                        </effect>
-                     </ImageView>
-                     <ImageView fitHeight="67.0" fitWidth="82.0" layoutX="283.0" layoutY="236.0">
-                        <image>
-                           <Image url="@../../../icons/house1c.png" />
-                        </image>
-                        <effect>
-                           <Glow level="0.59" />
-                        </effect>
-                     </ImageView>
-                     <ImageView fitHeight="67.0" fitWidth="82.0" layoutX="857.0" layoutY="487.0">
-                        <image>
-                           <Image url="@../../../icons/house1c.png" />
-                        </image>
-                        <effect>
-                           <Glow level="0.59" />
-                        </effect>
-                     </ImageView>
-                     <ImageView fitHeight="67.0" fitWidth="82.0" layoutX="833.0" layoutY="303.0">
-                        <image>
-                           <Image url="@../../../icons/house1c.png" />
-                        </image>
-                        <effect>
-                           <Glow level="0.59" />
-                        </effect>
-                     </ImageView>
+
                      <ImageView fitHeight="200.0" fitWidth="206.0" layoutX="-1.0" layoutY="624.0">
                         <image>
                            <Image url="@../../../icons/harbor.png" />
-                        </image>
-                        <effect>
-                           <Glow level="0.59" />
-                        </effect>
-                     </ImageView>
-                     <ImageView fitHeight="67.0" fitWidth="82.0" layoutX="538.0" layoutY="146.0">
-                        <image>
-                           <Image url="@../../../icons/house1c.png" />
                         </image>
                         <effect>
                            <Glow level="0.59" />
@@ -683,60 +738,12 @@
                            <Glow level="0.59" />
                         </effect>
                      </ImageView>
-                     <ImageView fitHeight="67.0" fitWidth="82.0" layoutX="141.0" layoutY="613.0">
-                        <image>
-                           <Image url="@../../../icons/house1c.png" />
-                        </image>
-                        <effect>
-                           <Glow level="0.59" />
-                        </effect>
-                     </ImageView>
-                     <ImageView fitHeight="80.0" fitWidth="101.0" layoutX="53.0" layoutY="582.0">
-                        <image>
-                           <Image url="@../../../icons/house1b.png" />
-                        </image>
-                        <effect>
-                           <Glow level="0.59" />
-                        </effect>
-                     </ImageView>
-                     <ImageView fitHeight="80.0" fitWidth="101.0" layoutX="86.0" layoutY="635.0">
-                        <image>
-                           <Image url="@../../../icons/house1.png" />
-                        </image>
-                        <effect>
-                           <Glow level="0.59" />
-                        </effect>
-                     </ImageView>
-                     <ImageView fitHeight="67.0" fitWidth="82.0" layoutX="331.0" layoutY="668.0">
-                        <image>
-                           <Image url="@../../../icons/house1c.png" />
-                        </image>
-                        <effect>
-                           <Glow level="0.59" />
-                        </effect>
-                     </ImageView>
-                     <ImageView fitHeight="80.0" fitWidth="101.0" layoutX="175.0" layoutY="651.0">
-                        <image>
-                           <Image url="@../../../icons/house1b.png" />
-                        </image>
-                        <effect>
-                           <Glow level="0.59" />
-                        </effect>
-                     </ImageView>
-                     <ImageView fitHeight="80.0" fitWidth="101.0" layoutX="217.0" layoutY="671.0">
-                        <image>
-                           <Image url="@../../../icons/house1.png" />
-                        </image>
-                        <effect>
-                           <Glow level="0.59" />
-                        </effect>
-                     </ImageView>
-                     <ImageView fitHeight="156.0" fitWidth="200.0" layoutX="272.0" layoutY="728.0">
+                     <ImageView fx:id="port" fitHeight="156.0" fitWidth="200.0" layoutX="272.0" layoutY="728.0" visible="false" onMouseMoved="#onMouseHovered">
                         <image>
                            <Image url="@../../../icons/port.png" />
                         </image>
                      </ImageView>
-                     <ImageView fx:id="mine" fitHeight="156.0" fitWidth="154.0" layoutX="661.0" layoutY="73.0">
+                     <ImageView fx:id="mine" fitHeight="156.0" fitWidth="154.0" layoutX="661.0" layoutY="73.0" visible="false" onMouseMoved="#onMouseHovered">
                         <image>
                            <Image url="@../../../../../../../../../EDP/as_clay_pit0/idle/45/mine.png" />
                         </image>

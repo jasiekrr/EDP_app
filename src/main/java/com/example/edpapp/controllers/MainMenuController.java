@@ -39,6 +39,7 @@ public class MainMenuController {
         if(alert.showAndWait().get() == ButtonType.OK){
             Stage stage = (Stage)mainMenuPane.getScene().getWindow();
             stage.close();
+            System.exit(0);
         }
     }
 

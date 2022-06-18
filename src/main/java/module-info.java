@@ -15,6 +15,7 @@ module com.example.edpapp {
     exports com.example.edpapp;
     exports com.example.edpapp.controllers;
     exports com.example.edpapp.models;
+    exports com.example.edpapp.specials to com.google.guice;
     opens com.example.edpapp.models;
     opens com.example.edpapp.controllers to javafx.fxml;
 }
