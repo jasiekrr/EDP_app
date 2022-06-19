@@ -9,13 +9,14 @@ module com.example.edpapp {
     requires java.naming;
     requires jakarta.persistence;
     requires com.google.guice;
-
+    requires com.google.common;
     opens com.example.edpapp to javafx.fxml;
     exports com.example.edpapp.repositories to com.google.guice;
     exports com.example.edpapp;
     exports com.example.edpapp.controllers;
     exports com.example.edpapp.models;
     exports com.example.edpapp.specials to com.google.guice;
+    exports com.example.edpapp.Events to com.google.common;
     opens com.example.edpapp.models;
     opens com.example.edpapp.controllers to javafx.fxml;
 }

@@ -176,11 +176,12 @@ public class NewGameSettingsController implements Initializable {
         navigateToGame(event);
     }
     public void navigateToGame(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Game.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("View/Game.fxml"));
 
         Stage stage = (Stage)((javafx.scene.Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(fxmlLoader.load());
         GameController controller = fxmlLoader.getController();
+        System.out.println("chosen faction is: " + this.newGameDTO.chosenFaction);
         controller.setGame(loadNewGame(newGame));
         stage.setTitle("GAME!");
         stage.setScene(scene);
@@ -223,7 +224,7 @@ public class NewGameSettingsController implements Initializable {
         Injector injector = Guice.createInjector(new NewGameRepositoryGuiceModule());
         GameStartResources gameStartResources = injector.getInstance(GameStartResources.class);
 
-        return gameStartResources.getStartResources(newGame.getLevel(), newGame.getFaction());
+        return gameStartResources.getStartResources(newGame);
     }
 
 

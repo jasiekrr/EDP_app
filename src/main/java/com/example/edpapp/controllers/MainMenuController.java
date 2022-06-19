@@ -45,7 +45,7 @@ public class MainMenuController {
 
     @FXML
     public void onActionNewGame(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("NewGameSettings.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("View/NewGameSettings.fxml"));
 
         Stage stage = (Stage)((javafx.scene.Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(fxmlLoader.load());

@@ -8,5 +8,7 @@
         <property name="hibernate.connection.password">password</property>
         <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/gamesDb</property>
         <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+        <mapping class="com.example.edpapp.models.GameStat"/>
+        <mapping class="com.example.edpapp.models.NewGame"/>
     </session-factory>
 </hibernate-configuration>

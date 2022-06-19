@@ -1,6 +1,7 @@
 package com.example.edpapp.specials;
 
 import com.example.edpapp.models.GameStat;
+import com.example.edpapp.models.NewGame;
 import com.google.inject.Inject;
 
 public class GameStartResources {
@@ -14,15 +15,16 @@ public class GameStartResources {
 
     }
 
-    public GameStat getStartResources(String level, String faction) {
-        this.level = level;
-        this.faction = faction;
+    public GameStat getStartResources(NewGame newGame) {
+        this.level = newGame.getLevel();
+        this.faction = newGame.getFaction();
         switch (level) {
             case "sandbox" -> multiplier = 1;
             case "easy" -> multiplier = 0.8;
             case "medium" -> multiplier = 0.6;
             case "hard" -> multiplier = 0.4;
         }
+        gameStat.setNewgame(newGame);
         gameStat.setFood(1500 * multiplier);
         gameStat.setWood(1000 * multiplier);
         gameStat.setStone(500 * multiplier);
@@ -34,7 +36,7 @@ public class GameStartResources {
         gameStat.setBlacksmithlevel(0);
         gameStat.setBarrackslevel(0);
         gameStat.setFarmlevel(1);
-        gameStat.setLumberjacklevel(1);
+        gameStat.setLumberjacklevel(0);
         gameStat.setPortlevel(0);
         gameStat.setWatchtowerlevel(0);
         gameStat.setCastlelevel(1);

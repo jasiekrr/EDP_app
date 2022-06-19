@@ -18,7 +18,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException, ClassNotFoundException {
 
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("mainMenu.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("View/mainMenu.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 920, 720);
         stage.setTitle("Sieam");
 

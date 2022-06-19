@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.sql.Date;
 
 @Entity
-@Table(name = "newgame")
+@Table(name = "newgame", schema = "public", catalog = "gamesDb")
 public class NewGame {
 
     @Id

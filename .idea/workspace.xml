@@ -5,16 +5,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d7b87f7f-8b48-4caa-8ba0-03d972703881" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/specials/GameStartResources.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/specials/GameTimer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/Events/BuildingBuiltEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/Events/PauseEventListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/Events/PauseGameEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/Events/UpdateGainsListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/models/BuildingsCostsCalculator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/models/GamestatEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/models/NewgameEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/models/ResourcesPerMinuteCalculator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/repositories/GameStatRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/mine.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/edpapp/DbConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/DbConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/edpapp/IDbConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/IDbConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/edpapp/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/edpapp/controllers/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/controllers/GameController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/edpapp/controllers/MainMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/controllers/MainMenuController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/edpapp/controllers/NewGameSettingsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/controllers/NewGameSettingsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/edpapp/models/GameStat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/models/GameStat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/edpapp/repositories/NewGameRepositoryGuiceModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/repositories/NewGameRepositoryGuiceModule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/edpapp/models/NewGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/models/NewGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/edpapp/specials/GameStartResources.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/specials/GameStartResources.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/edpapp/Game.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/edpapp/Game.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/edpapp/Game.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/edpapp/View/Game.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/edpapp/NewGameSettings.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/edpapp/View/NewGameSettings.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/edpapp/mainMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/edpapp/View/mainMenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/edpapp/META-INf/hibernate.cfg.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,40 +61,45 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
-    &quot;last_directory_selection&quot;: &quot;C:/STUDIA/rok3/semestr6/JTP/Lab3/EDPapp/src/main/java/com/example/edpapp&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/STUDIA/rok3/semestr6/EDP/Guice-221.5080.9.zip&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "JPA.DatabaseSchemaImportDialog": "2ec499e5-82da-4e43-b7f0-113ee2fc0177",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "jdk.selected.JAVA_MODULE": "17",
+    "last_directory_selection": "C:/STUDIA/rok3/semestr6/JTP/Lab3/EDPapp/src/main/java/com/example/edpapp",
+    "last_opened_file_path": "C:/STUDIA/rok3/semestr6/EDP/Guice-221.5080.9.zip",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;,
-      &quot;postgresql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql",
+      "postgresql"
     ],
-    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
-      &quot;PLAIN_TEXT&quot;
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "PLAIN_TEXT"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\STUDIA\rok3\semestr6\JTP\Lab3\EDPapp\src\main\resources\com\example\edpapp\View" />
+      <recent name="C:\STUDIA\rok3\semestr6\JTP\Lab3\EDPapp\src\main\resources\com\example\edpapp" />
+      <recent name="C:\STUDIA\rok3\semestr6\JTP\Lab3\EDPapp\src\main\resources\META-INf" />
       <recent name="C:\STUDIA\rok3\semestr6\JTP\Lab3\EDPapp\src\main\resources\icons" />
       <recent name="C:\STUDIA\rok3\semestr6\JTP\Lab3\EDPapp\src\main\java\com\example\edpapp\controllers" />
-      <recent name="C:\STUDIA\rok3\semestr6\JTP\Lab3\EDPapp\src\main\java\com\example\edpapp" />
-      <recent name="C:\STUDIA\rok3\semestr6\JTP\Lab3\EDPapp\src\main\resources" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.example.edpapp" />
+    </key>
+    <key name="ImportMappingsDialog.RecentPackages">
+      <recent name="com.example.edpapp.models" />
     </key>
   </component>
   <component name="RunManager">
@@ -124,7 +146,9 @@
       <workItem from="1655474613809" duration="5925000" />
       <workItem from="1655541293032" duration="293000" />
       <workItem from="1655548044557" duration="5528000" />
-      <workItem from="1655563030138" duration="17932000" />
+      <workItem from="1655563030138" duration="18090000" />
+      <workItem from="1655625402432" duration="41754000" />
+      <workItem from="1655676210120" duration="2307000" />
     </task>
     <task id="LOCAL-00001" summary="Done main menu with exit button action">
       <created>1655065417891</created>
@@ -189,7 +213,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655482664368</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="improved game screen. Added custom control">
+      <created>1655589525878</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1655589525878</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -206,6 +237,7 @@
     <MESSAGE value="Game World set with pictures" />
     <MESSAGE value="extended database by adding next table and setting up constraints" />
     <MESSAGE value="Added new icons and began loading game from database" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added new icons and began loading game from database" />
+    <MESSAGE value="improved game screen. Added custom control" />
+    <option name="LAST_COMMIT_MESSAGE" value="improved game screen. Added custom control" />
   </component>
 </project>

@@ -106,7 +106,7 @@
                      <children>
                         <ImageView fx:id="map" fitHeight="254.0" fitWidth="317.0" onMouseClicked="#onMouseClickedMap" preserveRatio="true">
                            <image>
-                              <Image url="@../../../icons/map.jpg" />
+                              <Image url="@../../../../icons/map.jpg" />
                            </image>
                         </ImageView>
                         <VBox alignment="CENTER_RIGHT" prefHeight="200.0" prefWidth="100.0" spacing="50.0">

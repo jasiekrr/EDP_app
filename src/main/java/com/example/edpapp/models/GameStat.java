@@ -6,15 +6,17 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import java.sql.Timestamp;
 
+
+
 @Entity
-@Table(name = "gamestat")
+@Table(name = "gamestat", schema = "public", catalog = "gamesDb")
 public class GameStat {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @CreationTimestamp
-    private Timestamp timestamp;
+    private Timestamp createdon;
     @ManyToOne
     @JoinColumn(name = "newgameid")
     private NewGame newgame;
@@ -47,12 +49,9 @@ public class GameStat {
     private double ironperminute;
     private double goldperminute;
 
-
-
     public GameStat(){
 
     }
-
     public int getLightInfantry() {
         return lightInfantry;
     }
@@ -145,48 +144,24 @@ public class GameStat {
         this.foodperminute = foodperminute;
     }
 
-    public void setIronperminute(double ironperminute) {
-        this.ironperminute = ironperminute;
-    }
-
     public double getGoldperminute() {
         return goldperminute;
-    }
-
-    public void setGoldperminute(double goldperminute) {
-        this.goldperminute = goldperminute;
     }
 
     public double getWoodperminute() {
         return woodperminute;
     }
 
-    public void setWoodperminute(int woodperminute) {
-        this.woodperminute = woodperminute;
-    }
-
     public double getStoneperminute() {
         return stoneperminute;
-    }
-
-    public void setStoneperminute(int stoneperminute) {
-        this.stoneperminute = stoneperminute;
     }
 
     public double getFoodperminute() {
         return foodperminute;
     }
 
-    public void setFoodperminute(int foodperminute) {
-        this.foodperminute = foodperminute;
-    }
-
     public double getIronperminute() {
         return ironperminute;
-    }
-
-    public void setIronperminute(int ironperminute) {
-        this.ironperminute = ironperminute;
     }
 
     public NewGame getNewgame() {
@@ -245,12 +220,12 @@ public class GameStat {
         this.id = id;
     }
 
-    public Timestamp getTimestamp() {
-        return timestamp;
+    public Timestamp getCreatedon() {
+        return createdon;
     }
 
-    public void setTimestamp(Timestamp timestamp) {
-        this.timestamp = timestamp;
+    public void setCreatedon(Timestamp timestamp) {
+        this.createdon = timestamp;
     }
 
     public double getCastlelevel() {
@@ -317,4 +292,10 @@ public class GameStat {
         this.blacksmithlevel = blacksmithlevel;
     }
 
+    public void setGoldperminute(double goldperminute) {
+        this.goldperminute = goldperminute;
+    }
+    public void setIronperminute(double ironperminute) {
+        this.ironperminute = ironperminute;
+    }
 }
