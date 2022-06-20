@@ -4,34 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d7b87f7f-8b48-4caa-8ba0-03d972703881" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/api/Clouds.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/api/Coord.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/api/Sys.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/api/Weather.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/api/WeatherApiManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/api/WeatherApiService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/api/WeatherMain.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/api/Weather__1.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/api/Wind.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/controllers/LoadGameController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/dto/SavedGame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/edpapp/View/LoadGame.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/edpapp/DbConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/DbConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/edpapp/IDbConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/IDbConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/edpapp/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/edpapp/controllers/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/controllers/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/edpapp/controllers/MainMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/controllers/MainMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/edpapp/controllers/NewGameSettingsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/controllers/NewGameSettingsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/edpapp/models/ResourcesPerMinuteCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/models/ResourcesPerMinuteCalculator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/edpapp/repositories/GameStatRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/repositories/GameStatRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/edpapp/repositories/IGameStatRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/repositories/IGameStatRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/edpapp/View/mainMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/edpapp/View/mainMenu.fxml" afterDir="false" />
-    </list>
+    <list default="true" id="d7b87f7f-8b48-4caa-8ba0-03d972703881" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -157,7 +130,7 @@
       <workItem from="1655625402432" duration="41754000" />
       <workItem from="1655676210120" duration="2382000" />
       <workItem from="1655706993325" duration="19190000" />
-      <workItem from="1655731514965" duration="6790000" />
+      <workItem from="1655731514965" duration="6829000" />
     </task>
     <task id="LOCAL-00001" summary="Done main menu with exit button action">
       <created>1655065417891</created>
@@ -236,7 +209,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655678603420</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="connection to API done">
+      <created>1655740289107</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1655740289107</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -255,6 +235,7 @@
     <MESSAGE value="Added new icons and began loading game from database" />
     <MESSAGE value="improved game screen. Added custom control" />
     <MESSAGE value="improved database connection, added many many things, game is playable" />
-    <option name="LAST_COMMIT_MESSAGE" value="improved database connection, added many many things, game is playable" />
+    <MESSAGE value="connection to API done" />
+    <option name="LAST_COMMIT_MESSAGE" value="connection to API done" />
   </component>
 </project>
