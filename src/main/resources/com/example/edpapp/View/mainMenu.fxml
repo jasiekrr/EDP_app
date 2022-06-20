@@ -25,7 +25,7 @@
                   <Font size="36.0" />
                </font>
             </Button>
-            <Button fx:id="btnLoad" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="6.0" mnemonicParsing="false" prefWidth="300.0" text="Load Game" textAlignment="CENTER">
+            <Button fx:id="btnLoad" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="6.0" mnemonicParsing="false" prefWidth="300.0" text="Load Game" textAlignment="CENTER" onAction="#onActionLoad">
                <font>
                   <Font size="36.0" />
                </font>

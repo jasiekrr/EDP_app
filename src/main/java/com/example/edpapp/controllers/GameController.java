@@ -5,6 +5,8 @@ import com.example.edpapp.Events.PauseEventListener;
 import com.example.edpapp.Events.PauseGameEvent;
 import com.example.edpapp.Events.UpdateGainsListener;
 import com.example.edpapp.Main;
+import com.example.edpapp.api.*;
+import com.example.edpapp.api.Weather;
 import com.example.edpapp.models.BuildingsCostsCalculator;
 import com.example.edpapp.models.GameStat;
 import com.example.edpapp.models.NewGame;
@@ -32,12 +34,14 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-
+import retrofit2.Call;
+import retrofit2.Callback;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
@@ -165,6 +169,7 @@ public class GameController implements Initializable {
     private PauseGameEvent pauseGameEvent;
     private PauseEventListener pauseEventListener;
     private Timeline timeline;
+    private Timeline timelineWeather;
     private NewGameRepository newGameRepository;
     private GameStatRepository gameStatRepository;
 
@@ -180,6 +185,7 @@ public class GameController implements Initializable {
         alert.showAndWait();
     }
     public void saveGame(){
+        gameStat.setCreatedon(new Timestamp(System.currentTimeMillis()));
         gameStatRepository.postGame(gameStat);
     }
     public void onActionBackToMenu(ActionEvent event) throws IOException {
@@ -192,7 +198,7 @@ public class GameController implements Initializable {
             Stage stage = (Stage)gamePane.getScene().getWindow();
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("View/MainMenu.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
-            stage.setTitle("Main Menu");
+            stage.setTitle("WeatherMain Menu");
             stage.setScene(scene);
             stage.setResizable(false);
             stage.show();
@@ -202,6 +208,38 @@ public class GameController implements Initializable {
 
         return newGameRepository.getLastNewGame();
     }
+    public void unleashWeatherTimer(){
+        timelineWeather = new Timeline(new KeyFrame(Duration.seconds(600), event -> {
+            updateWeather();
+        }));
+        timeline.setCycleCount(Animation.INDEFINITE);
+        timeline.play();
+    }
+
+    private void updateWeather() {
+        WeatherApiService weatherApiService = WeatherApiManager.getClient().create(WeatherApiService.class);
+        Call<Weather> call = weatherApiService.requestWeather(gameStat.getNewgame().getLocation_y(), gameStat.getNewgame().getLocation_x());
+        call.enqueue(new Callback<Weather>() {
+            @Override
+            public void onResponse(Call<Weather> call, retrofit2.Response<Weather> response) {
+                if (response.isSuccessful()) {
+                    Weather weather = response.body();
+                    assert response.body() != null;
+                    System.out.println("odebrano ");
+                    System.out.println(weather.getWeather().get(0).getDescription());
+                    System.out.println(weather.getName());
+                    System.out.println(weather.getMain().getTemp());
+                    System.out.println(weather.getSys().getCountry());
+                    System.out.println("oraz " + gameStat.getNewgame().getLocation_y());
+                }
+            }
+            @Override
+            public void onFailure(Call<Weather> call, Throwable throwable) {
+                System.out.println(throwable.getMessage());
+            }
+        });
+    }
+
     public void loadSpecialUnitLabel(){
         switch (newGame.getFaction()) {
             case "rome" -> specialUnitName.setText("Legions");
@@ -262,6 +300,8 @@ public class GameController implements Initializable {
         this.resourcesMap = new HashMap<>();
 
         updateResourcesGain();
+
+        updateWeather();
     }
     public int getNumericLevel(String stringLevel){
         int level = 0;

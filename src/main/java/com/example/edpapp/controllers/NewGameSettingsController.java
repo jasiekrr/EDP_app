@@ -122,14 +122,7 @@ public class NewGameSettingsController implements Initializable {
         greeksButton.setGraphic(greeceImageView);
     }
     public void onActionBackToMenu(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("MainMenu.fxml"));
-
-        Stage stage = (Stage)((javafx.scene.Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("Main Menu");
-        stage.setScene(scene);
-        stage.setResizable(false);
-        stage.show();
+        LoadGameController.navigateToMenu(event);
     }
     public void onActionRomeClicked(ActionEvent event){
         romeChooser.setVisible(true);

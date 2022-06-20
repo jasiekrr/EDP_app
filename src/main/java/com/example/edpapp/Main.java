@@ -1,8 +1,5 @@
 package com.example.edpapp;
 
-import com.example.edpapp.repositories.NewGameRepositoryGuiceModule;
-import com.google.inject.Guice;
-import com.google.inject.Injector;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

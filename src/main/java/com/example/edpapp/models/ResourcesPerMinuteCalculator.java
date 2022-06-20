@@ -14,9 +14,9 @@ public class ResourcesPerMinuteCalculator {
     public GameStat getResourcesIncrement(GameStat gameStat) {
         gameStat.setFoodperminute(gameStat.getFarmlevel() * 500 + (4 - difficultyLevel) * 100 - gameStat.getHousinglevel() * 100 - gameStat.getLightInfantry()  - gameStat.getMediumInfantry() * 5 - gameStat.getHeavyInfantry() * 10 - gameStat.getSpecialUnit() * 10);
         gameStat.setWoodperminute(gameStat.getLumberjacklevel() * 100 + (4 - difficultyLevel) * 100);
-        gameStat.setStoneperminute(gameStat.getMinelevel() * 100 + (4 - difficultyLevel) * 100);
+        gameStat.setStoneperminute(gameStat.getMinelevel() * 100 * (4 - difficultyLevel));
         gameStat.setGoldperminute(gameStat.getPortlevel() * 100 + (4 - difficultyLevel) * 50 - gameStat.getMediumInfantry() * 2 - gameStat.getHeavyInfantry() * 3 - gameStat.getSpecialUnit() * 3);
-        gameStat.setIronperminute(gameStat.getBlacksmithlevel() * 100 + (4 - difficultyLevel) * 100);
+        gameStat.setIronperminute(gameStat.getBlacksmithlevel() * 100 * (4 - difficultyLevel));
         return gameStat;
     }
 }

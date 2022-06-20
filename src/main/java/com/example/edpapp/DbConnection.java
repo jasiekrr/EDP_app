@@ -2,10 +2,11 @@ package com.example.edpapp;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.List;
 
 import com.example.edpapp.models.GameStat;
 import com.example.edpapp.models.NewGame;
-import com.example.edpapp.models.NewgameEntity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -14,6 +15,7 @@ public class DbConnection implements IDbConnection {
 
     Configuration configuration;
     Session session;
+    SessionFactory sessionFactory;
 
     public DbConnection(){
         setUp();
@@ -25,14 +27,7 @@ public class DbConnection implements IDbConnection {
         configuration.addAnnotatedClass(NewGame.class);
         configuration.addAnnotatedClass(GameStat.class);
 
-        SessionFactory sessionFactory = configuration.buildSessionFactory();
-
-        session = sessionFactory.openSession();
-
-        //open session for newgame table
-
-
-
+        sessionFactory = configuration.buildSessionFactory();
     }
 
     public void makeConnection() throws ClassNotFoundException {
@@ -50,6 +45,7 @@ public class DbConnection implements IDbConnection {
 
     }
     public void saveNewGame(NewGame newGame){
+        session = sessionFactory.openSession();
         try{
             session.getTransaction().begin();
             session.persist(newGame);
@@ -63,6 +59,7 @@ public class DbConnection implements IDbConnection {
 
     @Override
     public NewGame getLastNewGame() {
+        session = sessionFactory.openSession();
         session.getTransaction().begin();
         NewGame newGame = (NewGame) session.createQuery("from NewGame order by id desc").setMaxResults(1).uniqueResult();
         session.getTransaction().commit();
@@ -72,14 +69,35 @@ public class DbConnection implements IDbConnection {
     }
 
     public void saveGame(GameStat gameStat){
+        session = sessionFactory.openSession();
         try{
             session.beginTransaction();
-            session.persist(gameStat);
+            session.merge(gameStat);
             session.getTransaction().commit();
             session.close();
         }catch (Exception ex){
             System.out.println(ex.getMessage());
             System.out.println("Database error");
         }
+    }
+
+    public List<GameStat> getAllGames(){
+        session = sessionFactory.openSession();
+        session.getTransaction().begin();
+        List<GameStat> gameStats = session.createQuery("from GameStat").list();
+        session.getTransaction().commit();
+        session.close();
+        return gameStats;
+    }
+
+    @Override
+    public GameStat getGameBySaveGameColumns(String faction, String townName, Timestamp createdOn) {
+        session = sessionFactory.openSession();
+        System.out.println("session = " + session.toString());
+        session.getTransaction().begin();
+        GameStat gameStat = (GameStat) session.createQuery("from GameStat where newgame.faction = :faction and newgame.townName = :townName and createdon = :createdOn").setParameter("faction", faction).setParameter("townName", townName).setParameter("createdOn", createdOn).uniqueResult();
+        session.getTransaction().commit();
+        session.close();
+        return gameStat;
     }
 }
