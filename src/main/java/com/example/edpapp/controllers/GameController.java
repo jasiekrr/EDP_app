@@ -1,12 +1,10 @@
 package com.example.edpapp.controllers;
 
-import com.example.edpapp.Events.BuildingBuiltEvent;
-import com.example.edpapp.Events.PauseEventListener;
-import com.example.edpapp.Events.PauseGameEvent;
-import com.example.edpapp.Events.UpdateGainsListener;
+import com.example.edpapp.Events.*;
 import com.example.edpapp.Main;
 import com.example.edpapp.api.*;
 import com.example.edpapp.api.Weather;
+import com.example.edpapp.customControls.UpgradeControl;
 import com.example.edpapp.models.BuildingsCostsCalculator;
 import com.example.edpapp.models.GameStat;
 import com.example.edpapp.models.NewGame;
@@ -14,6 +12,7 @@ import com.example.edpapp.models.ResourcesPerMinuteCalculator;
 import com.example.edpapp.repositories.GameStatRepository;
 import com.example.edpapp.repositories.NewGameRepository;
 import com.example.edpapp.repositories.NewGameRepositoryGuiceModule;
+import com.example.edpapp.specials.PropertiesManager;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import javafx.animation.Animation;
@@ -25,6 +24,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.effect.Glow;
@@ -32,6 +32,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import retrofit2.Call;
@@ -48,7 +49,6 @@ import java.util.ResourceBundle;
 import com.google.common.eventbus.EventBus;
 
 public class GameController implements Initializable {
-
     @FXML
     public Button buildCastleButton;
     @FXML
@@ -138,6 +138,14 @@ public class GameController implements Initializable {
     @FXML
     public Button buildPortButton;
     @FXML
+    public Label LocationLabel;
+    @FXML
+    public AnchorPane gameplayPane;
+    @FXML
+    public ImageView tower;
+    @FXML
+    public ImageView farm;
+    @FXML
     private Button saveGameButton;
     @FXML
     private Button backToMenuButton;
@@ -157,6 +165,8 @@ public class GameController implements Initializable {
     private Label stoneLabel;
     @FXML
     private Label goldLabel;
+    @FXML
+    private Label temperatureLabel;
 
 
     private EventBus eventBus;
@@ -172,7 +182,12 @@ public class GameController implements Initializable {
     private Timeline timelineWeather;
     private NewGameRepository newGameRepository;
     private GameStatRepository gameStatRepository;
+    private UpdateWeatherDisplayListener updateWeatherDisplayListener;
+    private PropertiesManager propertiesManager;
+    private Weather weather;
 
+    public GameController() {
+    }
 
     public void onActionSaveGame(ActionEvent event){
         //navigate to save game screen
@@ -218,21 +233,23 @@ public class GameController implements Initializable {
 
     private void updateWeather() {
         WeatherApiService weatherApiService = WeatherApiManager.getClient().create(WeatherApiService.class);
-        Call<Weather> call = weatherApiService.requestWeather(gameStat.getNewgame().getLocation_y(), gameStat.getNewgame().getLocation_x());
-        call.enqueue(new Callback<Weather>() {
+        System.out.println("updateWeather URL : " + propertiesManager.getProperty("URL"));
+        Call<Weather> call = weatherApiService.requestWeather(propertiesManager.getProperty("URL"),gameStat.getNewgame().getLocation_y(), gameStat.getNewgame().getLocation_x());
+        call.enqueue(new Callback<>() {
             @Override
             public void onResponse(Call<Weather> call, retrofit2.Response<Weather> response) {
                 if (response.isSuccessful()) {
-                    Weather weather = response.body();
-                    assert response.body() != null;
-                    System.out.println("odebrano ");
-                    System.out.println(weather.getWeather().get(0).getDescription());
-                    System.out.println(weather.getName());
-                    System.out.println(weather.getMain().getTemp());
-                    System.out.println(weather.getSys().getCountry());
-                    System.out.println("oraz " + gameStat.getNewgame().getLocation_y());
+                    weather = response.body();
+                    assert weather != null;
+
+                    eventBus.post(new UpdateWeatherDisplayEvent(weather));
+
+                } else {
+                    System.out.println("nie odebrano");
+                    System.out.println(response.errorBody());
                 }
             }
+
             @Override
             public void onFailure(Call<Weather> call, Throwable throwable) {
                 System.out.println(throwable.getMessage());
@@ -268,13 +285,14 @@ public class GameController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        propertiesManager = PropertiesManager.getInstance();
+
         Injector injector = Guice.createInjector(new NewGameRepositoryGuiceModule());
         newGameRepository = injector.getInstance(NewGameRepository.class);
         gameStatRepository = injector.getInstance(GameStatRepository.class);
 
         newGame = uploadNewGame();
         eventBus = new EventBus();
-        pauseEventListener = new PauseEventListener();
 
         loadSpecialUnitLabel();
         try {
@@ -288,9 +306,6 @@ public class GameController implements Initializable {
         resourcesPerMinuteCalculator = new ResourcesPerMinuteCalculator(numericDifficultyLevel, gameStat);
         this.gameStat = resourcesPerMinuteCalculator.getResourcesIncrement(gameStat);
 
-        eventBus.register(pauseEventListener);
-        pauseGameEvent = new PauseGameEvent(gameStat);
-
         initBuildings();
         updateUnitsDisplay();
         displayBuildingButtons();
@@ -302,6 +317,14 @@ public class GameController implements Initializable {
         updateResourcesGain();
 
         updateWeather();
+
+        pauseEventListener = new PauseEventListener(timeline, timelineWeather);
+        updateWeatherDisplayListener = new UpdateWeatherDisplayListener(LocationLabel, temperatureLabel);
+        eventBus.register(pauseEventListener);
+        eventBus.register(updateWeatherDisplayListener);
+        pauseGameEvent = new PauseGameEvent(gameStat);
+
+        unleashWeatherTimer();
     }
     public int getNumericLevel(String stringLevel){
         int level = 0;
@@ -451,7 +474,7 @@ public class GameController implements Initializable {
         }
 
     }
-    public void onBuildLumberjackButton(ActionEvent event) {
+    public void onBuildLumberjackButton() throws FileNotFoundException {
 
         if(buildOrUpgradeBuilding("lumberjack", lumberjackProgressBar, buildLumberjackButton)){
 
@@ -463,7 +486,7 @@ public class GameController implements Initializable {
             gameStat.setLumberjacklevel(gameStat.getLumberjacklevel() + 1);
         }
     }
-    public void onBuildBlacksmithButton(ActionEvent event) {
+    public void onBuildBlacksmithButton() throws FileNotFoundException {
 
         if(buildOrUpgradeBuilding("blacksmith", blacksmithProgressBar, buildBlacksmithButton)){
             blacksmith.setVisible(true);
@@ -476,7 +499,7 @@ public class GameController implements Initializable {
             gameStat.setBlacksmithlevel(gameStat.getBlacksmithlevel() + 1);
         }
     }
-    public void onBuildPortButton(ActionEvent event) {
+    public void onBuildPortButton() throws FileNotFoundException {
         if(buildOrUpgradeBuilding("port", portProgressBar, buildPortButton)){
             port.setVisible(true);
             gameStat.setFood(gameStat.getFood() - buildingsCostsCalculator.getPortCosts((int)gameStat.getPortlevel()).get("food"));
@@ -487,7 +510,7 @@ public class GameController implements Initializable {
             gameStat.setPortlevel(gameStat.getPortlevel() + 1);
         }
     }
-    public void onBuildTowerButton(ActionEvent event) {
+    public void onBuildTowerButton() throws FileNotFoundException {
         if(buildOrUpgradeBuilding("watchtower", towerProgressBar, buildTowerButton)){
             gameStat.setFood(gameStat.getFood() - buildingsCostsCalculator.getWatchtowerCosts((int)gameStat.getWatchtowerlevel()).get("food"));
             gameStat.setWood(gameStat.getWood() - buildingsCostsCalculator.getWatchtowerCosts((int)gameStat.getWatchtowerlevel()).get("wood"));
@@ -497,7 +520,7 @@ public class GameController implements Initializable {
             gameStat.setWatchtowerlevel(gameStat.getWatchtowerlevel() + 1);
         }
     }
-    public void onBuildBarracksButton(ActionEvent event) {
+    public void onBuildBarracksButton() throws FileNotFoundException {
         if(buildOrUpgradeBuilding("barracks", barracksProgressBar, buildBarracksButton)){
             barracks.setVisible(true);
             gameStat.setFood(gameStat.getFood() - buildingsCostsCalculator.getBarracksCosts((int)gameStat.getBarrackslevel()).get("food"));
@@ -509,7 +532,7 @@ public class GameController implements Initializable {
             gameStat.setBarrackslevel(gameStat.getBarrackslevel() + 1);
         }
     }
-    public void onBuildMineButton(ActionEvent event) {
+    public void onBuildMineButton() throws FileNotFoundException {
         if(buildOrUpgradeBuilding("mine", mineProgressBar, buildMineButton)){
             mine.setVisible(true);
 
@@ -521,7 +544,7 @@ public class GameController implements Initializable {
             gameStat.setMinelevel(gameStat.getMinelevel() + 1);
         }
     }
-    public void setLabelsToDefault(MouseEvent event) {
+    public void setLabelsToDefault(MouseEvent event, Pane pane) {
         Button button = (Button) event.getSource();
         button.onMouseExitedProperty().set(event1 -> {
             foodCostsLabel.setText("");
@@ -529,16 +552,18 @@ public class GameController implements Initializable {
             stoneCostsLabel.setText("");
             goldCostsLabel.setText("");
             ironCostsLabel.setText("");
+            gameplayPane.getChildren().remove(pane);
         });
     }
-    public ImageView makeHousesVisible(){
+    public ImageView makeHousesVisible() throws FileNotFoundException {
         ImageView houses = new ImageView();
         for(int i = 0; i < gameStat.getHousinglevel(); i++){
             houses = (ImageView) housingGroup.getChildren().get(i);
         }
+
         return houses;
     }
-    public boolean buildOrUpgradeBuilding(String buildingName,ProgressBar progressBar, Button buildButton) {
+    public boolean buildOrUpgradeBuilding(String buildingName,ProgressBar progressBar, Button buildButton) throws FileNotFoundException {
         UpdateGainsListener updateGainsListener = new UpdateGainsListener(woodGainLabel, stoneGainLabel, foodGainLabel, goldGainLabel, ironGainLabel);
         eventBus.register(updateGainsListener);
 
@@ -625,7 +650,17 @@ public class GameController implements Initializable {
         buildButton.setText("upgrade "+buildingName);
         return true;
     }
-    public void onMouseHoveredViewLumberjackCost(MouseEvent event) {
+    public Pane showArrow(ImageView imageView, int level) throws FileNotFoundException {
+        UpgradeControl customControl = new UpgradeControl(true, level);
+        Pane pane = customControl.getControl();
+        pane.setLayoutX(imageView.getLayoutX());
+        pane.setLayoutY(imageView.getLayoutY());
+
+        gameplayPane.getChildren().add(pane);
+
+        return pane;
+    }
+    public void onMouseHoveredViewLumberjackCost(MouseEvent event) throws FileNotFoundException {
         if(gameStat.getLumberjacklevel() == (int)gameStat.getLumberjacklevel()){
             foodCostsLabel.setText(" - " + buildingsCostsCalculator.getLumberjackCosts((int)gameStat.getLumberjacklevel()).get("food"));
             woodCostsLabel.setText(" - " + buildingsCostsCalculator.getLumberjackCosts((int)gameStat.getLumberjacklevel()).get("wood"));
@@ -633,7 +668,8 @@ public class GameController implements Initializable {
             goldCostsLabel.setText(" - " + buildingsCostsCalculator.getLumberjackCosts((int)gameStat.getLumberjacklevel()).get("gold"));
             ironCostsLabel.setText(" - " + buildingsCostsCalculator.getLumberjackCosts((int)gameStat.getLumberjacklevel()).get("iron"));
         }
-        setLabelsToDefault(event);
+        Pane pane = showArrow(castle, (int)gameStat.getLumberjacklevel());
+        setLabelsToDefault(event, pane);
     }
     public ImageView makeTowersVisible() {
         ImageView imageView = new ImageView();
@@ -644,7 +680,7 @@ public class GameController implements Initializable {
         }
         return imageView;
     }
-    public void onMouseHoveredViewPortCost(MouseEvent event) {
+    public void onMouseHoveredViewPortCost(MouseEvent event) throws FileNotFoundException {
         if(gameStat.getPortlevel() ==(int)gameStat.getPortlevel()){
             foodCostsLabel.setText(" - " + buildingsCostsCalculator.getPortCosts((int)gameStat.getPortlevel()).get("food"));
             woodCostsLabel.setText(" - " + buildingsCostsCalculator.getPortCosts((int)gameStat.getPortlevel()).get("wood"));
@@ -652,9 +688,11 @@ public class GameController implements Initializable {
             goldCostsLabel.setText(" - " + buildingsCostsCalculator.getPortCosts((int)gameStat.getPortlevel()).get("gold"));
             ironCostsLabel.setText(" - " + buildingsCostsCalculator.getPortCosts((int)gameStat.getPortlevel()).get("iron"));
         }
-        setLabelsToDefault(event);
+        Pane pane = showArrow(port, (int)gameStat.getPortlevel());
+
+        setLabelsToDefault(event, pane);
     }
-    public void onMouseHoveredViewBlacksmithCost(MouseEvent event) {
+    public void onMouseHoveredViewBlacksmithCost(MouseEvent event) throws FileNotFoundException {
         if(gameStat.getBlacksmithlevel() == (int)gameStat.getBlacksmithlevel()){
             foodCostsLabel.setText(" - " + buildingsCostsCalculator.getBlacksmithCosts((int)gameStat.getBlacksmithlevel()).get("food"));
             woodCostsLabel.setText(" - " + buildingsCostsCalculator.getBlacksmithCosts((int)gameStat.getBlacksmithlevel()).get("wood"));
@@ -662,9 +700,12 @@ public class GameController implements Initializable {
             goldCostsLabel.setText(" - " + buildingsCostsCalculator.getBlacksmithCosts((int)gameStat.getBlacksmithlevel()).get("gold"));
             ironCostsLabel.setText(" - " + buildingsCostsCalculator.getBlacksmithCosts((int)gameStat.getBlacksmithlevel()).get("iron"));
         }
-        setLabelsToDefault(event);
+
+        Pane pane = showArrow(blacksmith, (int)gameStat.getBlacksmithlevel());
+
+        setLabelsToDefault(event, pane);
     }
-    public void onMouseHoveredViewMineCost(MouseEvent event) {
+    public void onMouseHoveredViewMineCost(MouseEvent event) throws FileNotFoundException {
         if(gameStat.getMinelevel() == (int)gameStat.getMinelevel()){
             foodCostsLabel.setText(" - " + buildingsCostsCalculator.getMineCosts((int)gameStat.getMinelevel()).get("food"));
             woodCostsLabel.setText(" - " + buildingsCostsCalculator.getMineCosts((int)gameStat.getMinelevel()).get("wood"));
@@ -672,9 +713,10 @@ public class GameController implements Initializable {
             goldCostsLabel.setText(" - " + buildingsCostsCalculator.getMineCosts((int)gameStat.getMinelevel()).get("gold"));
             ironCostsLabel.setText(" - " + buildingsCostsCalculator.getMineCosts((int)gameStat.getMinelevel()).get("iron"));
         }
-        setLabelsToDefault(event);
+        Pane pane = showArrow(mine, (int)gameStat.getMinelevel());
+        setLabelsToDefault(event,pane);
     }
-    public void onMouseHoveredViewWatchtowerCost(MouseEvent event) {
+    public void onMouseHoveredViewWatchtowerCost(MouseEvent event) throws FileNotFoundException {
         if(gameStat.getWatchtowerlevel() == (int)gameStat.getWatchtowerlevel()){
             foodCostsLabel.setText(" - " + buildingsCostsCalculator.getWatchtowerCosts((int)gameStat.getWatchtowerlevel()).get("food"));
             woodCostsLabel.setText(" - " + buildingsCostsCalculator.getWatchtowerCosts((int)gameStat.getWatchtowerlevel()).get("wood"));
@@ -682,9 +724,10 @@ public class GameController implements Initializable {
             goldCostsLabel.setText(" - " + buildingsCostsCalculator.getWatchtowerCosts((int)gameStat.getWatchtowerlevel()).get("gold"));
             ironCostsLabel.setText(" - " + buildingsCostsCalculator.getWatchtowerCosts((int)gameStat.getWatchtowerlevel()).get("iron"));
         }
-        setLabelsToDefault(event);
+        Pane pane = showArrow(castle, (int)gameStat.getWatchtowerlevel());
+        setLabelsToDefault(event, pane);
     }
-    public void onMouseHoveredViewBarracksCost(MouseEvent event) {
+    public void onMouseHoveredViewBarracksCost(MouseEvent event) throws FileNotFoundException {
         if(gameStat.getBarrackslevel() == (int)gameStat.getBarrackslevel()){
             foodCostsLabel.setText(" - " + buildingsCostsCalculator.getBarracksCosts((int)gameStat.getBarrackslevel()).get("food"));
             woodCostsLabel.setText(" - " + buildingsCostsCalculator.getBarracksCosts((int)gameStat.getBarrackslevel()).get("wood"));
@@ -692,9 +735,10 @@ public class GameController implements Initializable {
             goldCostsLabel.setText(" - " + buildingsCostsCalculator.getBarracksCosts((int)gameStat.getBarrackslevel()).get("gold"));
             ironCostsLabel.setText(" - " + buildingsCostsCalculator.getBarracksCosts((int)gameStat.getBarrackslevel()).get("iron"));
         }
-        setLabelsToDefault(event);
+        Pane pane = showArrow(barracks, (int)gameStat.getBarrackslevel());
+        setLabelsToDefault(event, pane);
     }
-    public void onBuildCastleButton(ActionEvent event) {
+    public void onBuildCastleButton() throws FileNotFoundException {
         if(buildOrUpgradeBuilding("castle", castleProgressBar, buildCastleButton)){
 
             gameStat.setFood(gameStat.getFood() - buildingsCostsCalculator.getCastleCosts((int)gameStat.getCastlelevel()).get("food"));
@@ -705,7 +749,7 @@ public class GameController implements Initializable {
             gameStat.setCastlelevel(gameStat.getCastlelevel() + 1);
         }
     }
-    public void onMouseHoveredViewCastleCost(MouseEvent event) {
+    public void onMouseHoveredViewCastleCost(MouseEvent event) throws FileNotFoundException {
         if(gameStat.getCastlelevel() == (int)gameStat.getCastlelevel()){
             foodCostsLabel.setText(" - " + buildingsCostsCalculator.getCastleCosts((int)gameStat.getCastlelevel()).get("food"));
             woodCostsLabel.setText(" - " + buildingsCostsCalculator.getCastleCosts((int)gameStat.getCastlelevel()).get("wood"));
@@ -714,9 +758,10 @@ public class GameController implements Initializable {
             ironCostsLabel.setText(" - " + buildingsCostsCalculator.getCastleCosts((int)gameStat.getCastlelevel()).get("iron"));
 
         }
-        setLabelsToDefault(event);
+        Pane pane = showArrow(castle, (int)gameStat.getCastlelevel());
+        setLabelsToDefault(event, pane);
     }
-    public void onBuildHousingButton(ActionEvent event) {
+    public void onBuildHousingButton() throws FileNotFoundException {
         if(buildOrUpgradeBuilding("housing", housingProgressBar, buildHousingButton)){
             makeHousesVisible();
 
@@ -726,10 +771,9 @@ public class GameController implements Initializable {
             gameStat.setGold(gameStat.getGold() - buildingsCostsCalculator.getHousesCosts((int)gameStat.getHousinglevel()).get("gold"));
             gameStat.setIron(gameStat.getIron() - buildingsCostsCalculator.getHousesCosts((int)gameStat.getHousinglevel()).get("iron"));
             gameStat.setHousinglevel(gameStat.getHousinglevel() + 1);
-
         }
     }
-    public void onMouseHoveredViewHousingCost(MouseEvent event) {
+    public void onMouseHoveredViewHousingCost(MouseEvent event) throws FileNotFoundException {
         if(gameStat.getHousinglevel()==(int)gameStat.getHousinglevel()){
             foodCostsLabel.setText(" - " + buildingsCostsCalculator.getHousesCosts((int)gameStat.getHousinglevel()).get("food"));
             woodCostsLabel.setText(" - " + buildingsCostsCalculator.getHousesCosts((int)gameStat.getHousinglevel()).get("wood"));
@@ -738,9 +782,10 @@ public class GameController implements Initializable {
             ironCostsLabel.setText(" - " + buildingsCostsCalculator.getHousesCosts((int)gameStat.getHousinglevel()).get("iron"));
 
         }
-        setLabelsToDefault(event);
+        Pane pane = showArrow(house1, (int)gameStat.getHousinglevel());
+        setLabelsToDefault(event,pane);
     }
-    public void onBuildFarmButton(ActionEvent event) {
+    public void onBuildFarmButton() throws FileNotFoundException {
         if(buildOrUpgradeBuilding("farm", farmProgressBar, buildFarmButton)){
             makeFarmVisible();
 
@@ -760,7 +805,7 @@ public class GameController implements Initializable {
         }
         return farms;
     }
-    public void onMouseHoveredViewFarmCost(MouseEvent event) {
+    public void onMouseHoveredViewFarmCost(MouseEvent event) throws FileNotFoundException {
         if(gameStat.getFarmlevel()  == (int)gameStat.getFarmlevel()){
             foodCostsLabel.setText(" - " + buildingsCostsCalculator.getFarmCosts((int)gameStat.getFarmlevel()).get("food"));
             woodCostsLabel.setText(" - " + buildingsCostsCalculator.getFarmCosts((int)gameStat.getFarmlevel()).get("wood"));
@@ -768,9 +813,35 @@ public class GameController implements Initializable {
             goldCostsLabel.setText(" - " + buildingsCostsCalculator.getFarmCosts((int)gameStat.getFarmlevel()).get("gold"));
             ironCostsLabel.setText(" - " + buildingsCostsCalculator.getFarmCosts((int)gameStat.getFarmlevel()).get("iron"));
         }
-        setLabelsToDefault(event);
+        Pane pane = showArrow(farm, (int)gameStat.getFarmlevel());
+        setLabelsToDefault(event,pane);
     }
     public void onActionPause(ActionEvent event) {
         eventBus.post(pauseGameEvent);
+    }
+
+    public void onClicked(MouseEvent event) throws FileNotFoundException {
+        //get source of event
+        Node source = (Node) event.getSource();
+        //generate and show custom UpgradeControl
+        //get id of source
+        String id = source.getId();
+
+        if(id.length()> 4){
+            if(id.substring(0, 5).equals("house")){
+                id ="house";
+            }
+        }
+        switch (id) {
+            case "castle" -> onBuildCastleButton();
+            case "house" -> onBuildHousingButton();
+            case "farm" -> onBuildFarmButton();
+            case "lumberjack" -> onBuildLumberjackButton();
+            case "mine" -> onBuildMineButton();
+            case "barracks" -> onBuildBarracksButton();
+            case "port" -> onBuildPortButton();
+            case "watchtower" -> onBuildTowerButton();
+            case "blacksmith" -> onBuildBlacksmithButton();
+        }
     }
 }
