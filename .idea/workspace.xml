@@ -5,23 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d7b87f7f-8b48-4caa-8ba0-03d972703881" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/Events/UpdateWeatherDisplayEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/Events/UpdateWeatherDisplayListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/Events/UpgradeEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/Events/UpgradeEventListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/customControls/UpgradeControl.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/customControls/UpgradeControl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/customControls/arrow.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/customControls/arrow_disabled.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/specials/PropertiesManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/config.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/edpapp/DbConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/DbConnection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/edpapp/Events/PauseEventListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/Events/PauseEventListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/edpapp/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/edpapp/api/WeatherApiManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/api/WeatherApiManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/edpapp/api/WeatherApiService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/api/WeatherApiService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/edpapp/Events/UpdateGainsListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/Events/UpdateGainsListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/edpapp/Events/UpdateWeatherDisplayEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/Events/UpdateWeatherDisplayEvent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/edpapp/controllers/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/controllers/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/edpapp/specials/GameStartResources.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/edpapp/specials/GameStartResources.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/edpapp/View/Game.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/edpapp/View/Game.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -152,7 +141,8 @@
       <workItem from="1655731514965" duration="6829000" />
       <workItem from="1655741111307" duration="1709000" />
       <workItem from="1655751399460" duration="11887000" />
-      <workItem from="1655792989865" duration="10798000" />
+      <workItem from="1655792989865" duration="10830000" />
+      <workItem from="1656007658924" duration="11798000" />
     </task>
     <task id="LOCAL-00001" summary="Done main menu with exit button action">
       <created>1655065417891</created>
@@ -252,7 +242,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655741599031</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="i think finnished">
+      <created>1655803911411</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1655803911411</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -272,6 +269,7 @@
     <MESSAGE value="improved game screen. Added custom control" />
     <MESSAGE value="improved database connection, added many many things, game is playable" />
     <MESSAGE value="connection to API done" />
-    <option name="LAST_COMMIT_MESSAGE" value="connection to API done" />
+    <MESSAGE value="i think finnished" />
+    <option name="LAST_COMMIT_MESSAGE" value="i think finnished" />
   </component>
 </project>

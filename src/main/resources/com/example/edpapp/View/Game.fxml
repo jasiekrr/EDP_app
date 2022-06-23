@@ -23,9 +23,9 @@
       <children>
          <AnchorPane minWidth="300.0" prefHeight="200.0" prefWidth="300.0">
             <children>
-               <VBox layoutX="14.0" layoutY="41.0" prefHeight="295.0" prefWidth="286.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="41.0">
+               <VBox layoutX="14.0" layoutY="41.0" prefHeight="643.0" prefWidth="286.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="41.0">
                   <HBox>
-                     <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="80.0" prefWidth="286.0" text="Resources">
+                     <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="64.0" prefWidth="310.0" text="Resources">
                         <font>
                            <Font name="Lato Bold Italic" size="24.0" />
                         </font>
@@ -245,7 +245,7 @@
                <VBox alignment="CENTER" layoutX="107.0" layoutY="636.0" prefHeight="200.0" prefWidth="300.0" AnchorPane.bottomAnchor="41.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                   <children>
                      <StackPane>
-                        <Button fx:id="buildLumberjackButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onBuildLumberjackButton" onMouseMoved="#onMouseHoveredViewLumberjackCost" prefHeight="25.0" prefWidth="300.0" text="build lumberjack's hut" visible="false">
+                        <Button fx:id="buildLumberjackButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onBuildLumberjackButton" onMouseEntered="#onMouseHoveredViewLumberjackCost" prefHeight="25.0" prefWidth="300.0" text="build lumberjack's hut" visible="false">
                            <VBox.margin>
                               <Insets />
                            </VBox.margin></Button>
@@ -335,7 +335,7 @@
                </GridPane>
                <AnchorPane fx:id="gameplayPane" prefHeight="200.0" prefWidth="200.0">
                   <children>
-                        <ImageView fx:id="lumberjack" fitWidth="101.0" layoutX="283.0" layoutY="58.0" onMouseMoved="#onMouseHovered" visible="false" onMouseClicked="#onClicked">
+                        <ImageView fx:id="lumberjack" fitWidth="101.0" layoutX="283.0" layoutY="58.0" onMouseClicked="#onClicked" onMouseMoved="#onMouseHovered" visible="false">
                            <image>
                               <Image url="@../../../../icons/house1b.png" />
                            </image>
@@ -345,7 +345,7 @@
                         </ImageView>
 
                      <Group fx:id="housingGroup">
-                        <ImageView fx:id="house" fitHeight="80.0" fitWidth="101.0" layoutX="801.0" layoutY="370.0" onMouseMoved="#onMouseHovered" visible="false" onMouseClicked="#onClicked">
+                        <ImageView fx:id="house" fitHeight="80.0" fitWidth="101.0" layoutX="801.0" layoutY="370.0" onMouseClicked="#onClicked" onMouseMoved="#onMouseHovered" visible="false">
                            <image>
                               <Image url="@../../../../icons/house1.png" />
                            </image>
@@ -353,7 +353,7 @@
                               <Glow level="0.59" />
                            </effect>
                         </ImageView>
-                        <ImageView fx:id="house1" fitHeight="80.0" fitWidth="101.0" layoutX="823.0" layoutY="419.0" onMouseMoved="#onMouseHovered" visible="false" onMouseClicked="#onClicked">
+                        <ImageView fx:id="house1" fitHeight="80.0" fitWidth="101.0" layoutX="823.0" layoutY="419.0" onMouseClicked="#onClicked" onMouseMoved="#onMouseHovered" visible="false">
                            <image>
                               <Image url="@../../../../icons/house1.png" />
                            </image>
@@ -361,7 +361,7 @@
                               <Glow level="0.59" />
                            </effect>
                         </ImageView>
-                        <ImageView fx:id="house2" fitHeight="80.0" fitWidth="101.0" layoutX="719.0" layoutY="375.0" onMouseMoved="#onMouseHovered" visible="false" onMouseClicked="#onClicked">
+                        <ImageView fx:id="house2" fitHeight="80.0" fitWidth="101.0" layoutX="719.0" layoutY="375.0" onMouseClicked="#onClicked" onMouseMoved="#onMouseHovered" visible="false">
                            <image>
                               <Image url="@../../../../icons/house1.png" />
                            </image>
@@ -369,7 +369,7 @@
                               <Glow level="0.59" />
                            </effect>
                         </ImageView>
-                        <ImageView fx:id="house3" fitHeight="80.0" fitWidth="101.0" layoutX="741.0" layoutY="424.0" onMouseMoved="#onMouseHovered" visible="false" onMouseClicked="#onClicked">
+                        <ImageView fx:id="house3" fitHeight="80.0" fitWidth="101.0" layoutX="741.0" layoutY="424.0" onMouseClicked="#onClicked" onMouseMoved="#onMouseHovered" visible="false">
                            <image>
                               <Image url="@../../../../icons/house1.png" />
                            </image>
@@ -377,7 +377,7 @@
                               <Glow level="0.59" />
                            </effect>
                         </ImageView>
-                        <ImageView fx:id="house4" fitHeight="80.0" fitWidth="101.0" layoutX="104.0" layoutY="321.0" onMouseMoved="#onMouseHovered" visible="false" onMouseClicked="#onClicked">
+                        <ImageView fx:id="house4" fitHeight="80.0" fitWidth="101.0" layoutX="104.0" layoutY="321.0" onMouseClicked="#onClicked" onMouseMoved="#onMouseHovered" visible="false">
                            <image>
                               <Image url="@../../../../icons/house1b.png" />
                            </image>
@@ -385,7 +385,7 @@
                               <Glow level="0.59" />
                            </effect>
                         </ImageView>
-                        <ImageView fx:id="house5" fitHeight="67.0" fitWidth="82.0" layoutX="734.0" layoutY="323.0" onMouseMoved="#onMouseHovered" visible="false" onMouseClicked="#onClicked">
+                        <ImageView fx:id="house5" fitHeight="67.0" fitWidth="82.0" layoutX="734.0" layoutY="323.0" onMouseClicked="#onClicked" onMouseMoved="#onMouseHovered" visible="false">
                            <image>
                               <Image url="@../../../../icons/house1c.png" />
                            </image>
@@ -393,7 +393,7 @@
                               <Glow level="0.59" />
                            </effect>
                         </ImageView>
-                        <ImageView fx:id="house6" fitHeight="67.0" fitWidth="82.0" layoutX="185.0" layoutY="269.0" onMouseMoved="#onMouseHovered" visible="false" onMouseClicked="#onClicked">
+                        <ImageView fx:id="house6" fitHeight="67.0" fitWidth="82.0" layoutX="185.0" layoutY="269.0" onMouseClicked="#onClicked" onMouseMoved="#onMouseHovered" visible="false">
                            <image>
                               <Image url="@../../../../icons/house1c.png" />
                            </image>
@@ -401,7 +401,7 @@
                               <Glow level="0.59" />
                            </effect>
                         </ImageView>
-                        <ImageView fx:id="house7" fitHeight="67.0" fitWidth="82.0" layoutX="793.0" layoutY="471.0" onMouseMoved="#onMouseHovered" visible="false" onMouseClicked="#onClicked">
+                        <ImageView fx:id="house7" fitHeight="67.0" fitWidth="82.0" layoutX="793.0" layoutY="471.0" onMouseClicked="#onClicked" onMouseMoved="#onMouseHovered" visible="false">
                            <image>
                               <Image url="@../../../../icons/house1c.png" />
                            </image>
@@ -409,7 +409,7 @@
                               <Glow level="0.59" />
                            </effect>
                         </ImageView>
-                        <ImageView fx:id="house8" fitHeight="80.0" fitWidth="101.0" layoutX="439.0" layoutY="488.0" onMouseMoved="#onMouseHovered" visible="false" onMouseClicked="#onClicked">
+                        <ImageView fx:id="house8" fitHeight="80.0" fitWidth="101.0" layoutX="439.0" layoutY="488.0" onMouseClicked="#onClicked" onMouseMoved="#onMouseHovered" visible="false">
                            <image>
                               <Image url="@../../../../icons/house1.png" />
                            </image>
@@ -417,7 +417,7 @@
                               <Glow level="0.59" />
                            </effect>
                         </ImageView>
-                        <ImageView fx:id="house9" fitHeight="67.0" fitWidth="82.0" layoutX="308.0" layoutY="438.0" onMouseMoved="#onMouseHovered" visible="false" onMouseClicked="#onClicked">
+                        <ImageView fx:id="house9" fitHeight="67.0" fitWidth="82.0" layoutX="308.0" layoutY="438.0" onMouseClicked="#onClicked" onMouseMoved="#onMouseHovered" visible="false">
                            <image>
                               <Image url="@../../../../icons/house1c.png" />
                            </image>
@@ -425,7 +425,7 @@
                               <Glow level="0.59" />
                            </effect>
                         </ImageView>
-                        <ImageView fx:id="house10" fitHeight="80.0" fitWidth="101.0" layoutX="349.0" layoutY="231.0" onMouseMoved="#onMouseHovered" visible="false" onMouseClicked="#onClicked">
+                        <ImageView fx:id="house10" fitHeight="80.0" fitWidth="101.0" layoutX="349.0" layoutY="231.0" onMouseClicked="#onClicked" onMouseMoved="#onMouseHovered" visible="false">
                            <image>
                               <Image url="@../../../../icons/house1.png" />
                            </image>
@@ -433,7 +433,7 @@
                               <Glow level="0.59" />
                            </effect>
                         </ImageView>
-                        <ImageView fx:id="house11" fitHeight="67.0" fitWidth="82.0" layoutX="693.0" layoutY="253.0" onMouseMoved="#onMouseHovered" visible="false" onMouseClicked="#onClicked">
+                        <ImageView fx:id="house11" fitHeight="67.0" fitWidth="82.0" layoutX="693.0" layoutY="253.0" onMouseClicked="#onClicked" onMouseMoved="#onMouseHovered" visible="false">
                            <image>
                               <Image url="@../../../../icons/house1c.png" />
                            </image>
@@ -441,7 +441,7 @@
                               <Glow level="0.59" />
                            </effect>
                         </ImageView>
-                        <ImageView fx:id="house12" fitHeight="67.0" fitWidth="82.0" layoutX="283.0" layoutY="236.0" onMouseMoved="#onMouseHovered" visible="false" onMouseClicked="#onClicked">
+                        <ImageView fx:id="house12" fitHeight="67.0" fitWidth="82.0" layoutX="283.0" layoutY="236.0" onMouseClicked="#onClicked" onMouseMoved="#onMouseHovered" visible="false">
                            <image>
                               <Image url="@../../../../icons/house1c.png" />
                            </image>
@@ -449,7 +449,7 @@
                               <Glow level="0.59" />
                            </effect>
                         </ImageView>
-                        <ImageView fx:id="house13" fitHeight="67.0" fitWidth="82.0" layoutX="857.0" layoutY="487.0" onMouseMoved="#onMouseHovered" visible="false" onMouseClicked="#onClicked">
+                        <ImageView fx:id="house13" fitHeight="67.0" fitWidth="82.0" layoutX="857.0" layoutY="487.0" onMouseClicked="#onClicked" onMouseMoved="#onMouseHovered" visible="false">
                            <image>
                               <Image url="@../../../../icons/house1c.png" />
                            </image>
@@ -457,7 +457,7 @@
                               <Glow level="0.59" />
                            </effect>
                         </ImageView>
-                        <ImageView fx:id="house14" fitHeight="67.0" fitWidth="82.0" layoutX="833.0" layoutY="303.0" onMouseMoved="#onMouseHovered" visible="false" onMouseClicked="#onClicked">
+                        <ImageView fx:id="house14" fitHeight="67.0" fitWidth="82.0" layoutX="833.0" layoutY="303.0" onMouseClicked="#onClicked" onMouseMoved="#onMouseHovered" visible="false">
                            <image>
                               <Image url="@../../../../icons/house1c.png" />
                            </image>
@@ -465,7 +465,7 @@
                               <Glow level="0.59" />
                            </effect>
                         </ImageView>
-                        <ImageView fx:id="house15" fitHeight="67.0" fitWidth="82.0" layoutX="538.0" layoutY="146.0" onMouseMoved="#onMouseHovered" visible="false" onMouseClicked="#onClicked">
+                        <ImageView fx:id="house15" fitHeight="67.0" fitWidth="82.0" layoutX="538.0" layoutY="146.0" onMouseClicked="#onClicked" onMouseMoved="#onMouseHovered" visible="false">
                            <image>
                               <Image url="@../../../../icons/house1c.png" />
                            </image>
@@ -473,7 +473,7 @@
                               <Glow level="0.59" />
                            </effect>
                         </ImageView>
-                        <ImageView fx:id="house16" fitHeight="80.0" fitWidth="101.0" layoutX="53.0" layoutY="582.0" onMouseMoved="#onMouseHovered" visible="false" onMouseClicked="#onClicked">
+                        <ImageView fx:id="house16" fitHeight="80.0" fitWidth="101.0" layoutX="53.0" layoutY="582.0" onMouseClicked="#onClicked" onMouseMoved="#onMouseHovered" visible="false">
                            <image>
                               <Image url="@../../../../icons/house1b.png" />
                            </image>
@@ -481,7 +481,7 @@
                               <Glow level="0.59" />
                            </effect>
                         </ImageView>
-                        <ImageView fx:id="house17" fitHeight="80.0" fitWidth="101.0" layoutX="86.0" layoutY="635.0" onMouseMoved="#onMouseHovered" visible="false" onMouseClicked="#onClicked">
+                        <ImageView fx:id="house17" fitHeight="80.0" fitWidth="101.0" layoutX="86.0" layoutY="635.0" onMouseClicked="#onClicked" onMouseMoved="#onMouseHovered" visible="false">
                            <image>
                               <Image url="@../../../../icons/house1.png" />
                            </image>
@@ -489,7 +489,7 @@
                               <Glow level="0.59" />
                            </effect>
                         </ImageView>
-                        <ImageView fx:id="house18" fitHeight="67.0" fitWidth="82.0" layoutX="331.0" layoutY="668.0" onMouseMoved="#onMouseHovered" visible="false" onMouseClicked="#onClicked">
+                        <ImageView fx:id="house18" fitHeight="67.0" fitWidth="82.0" layoutX="331.0" layoutY="668.0" onMouseClicked="#onClicked" onMouseMoved="#onMouseHovered" visible="false">
                            <image>
                               <Image url="@../../../../icons/house1c.png" />
                            </image>
@@ -497,7 +497,7 @@
                               <Glow level="0.59" />
                            </effect>
                         </ImageView>
-                        <ImageView fx:id="house19" fitHeight="80.0" fitWidth="101.0" layoutX="175.0" layoutY="651.0" onMouseMoved="#onMouseHovered" visible="false" onMouseClicked="#onClicked">
+                        <ImageView fx:id="house19" fitHeight="80.0" fitWidth="101.0" layoutX="175.0" layoutY="651.0" onMouseClicked="#onClicked" onMouseMoved="#onMouseHovered" visible="false">
                            <image>
                               <Image url="@../../../../icons/house1b.png" />
                            </image>
@@ -505,7 +505,7 @@
                               <Glow level="0.59" />
                            </effect>
                         </ImageView>
-                        <ImageView fx:id="house20" fitHeight="80.0" fitWidth="101.0" layoutX="217.0" layoutY="671.0" onMouseMoved="#onMouseHovered" visible="false" onMouseClicked="#onClicked">
+                        <ImageView fx:id="house20" fitHeight="80.0" fitWidth="101.0" layoutX="217.0" layoutY="671.0" onMouseClicked="#onClicked" onMouseMoved="#onMouseHovered" visible="false">
                            <image>
                               <Image url="@../../../../icons/house1.png" />
                            </image>
@@ -513,7 +513,7 @@
                               <Glow level="0.59" />
                            </effect>
                         </ImageView>
-                        <ImageView fx:id="house21" fitHeight="67.0" fitWidth="82.0" layoutX="141.0" layoutY="613.0" onMouseMoved="#onMouseHovered" visible="false" onMouseClicked="#onClicked">
+                        <ImageView fx:id="house21" fitHeight="67.0" fitWidth="82.0" layoutX="141.0" layoutY="613.0" onMouseClicked="#onClicked" onMouseMoved="#onMouseHovered" visible="false">
                            <image>
                               <Image url="@../../../../icons/house1c.png" />
                            </image>
@@ -522,7 +522,7 @@
                            </effect>
                         </ImageView>
                      </Group>
-                     <ImageView fx:id="castle" fitHeight="168.0" fitWidth="200.0" layoutX="460.0" layoutY="240.0" onMouseMoved="#onMouseHovered" visible="false" onMouseClicked="#onClicked">
+                     <ImageView fx:id="castle" fitHeight="168.0" fitWidth="200.0" layoutX="460.0" layoutY="240.0" onMouseClicked="#onClicked" onMouseMoved="#onMouseHovered" visible="false">
                         <image>
                            <Image url="@../../../../icons/castle.png" />
                         </image>
@@ -531,7 +531,7 @@
                         </effect>
                      </ImageView>
                      <Group fx:id="farmGroup">
-                        <ImageView fx:id="farm" layoutX="515.0" layoutY="507.0" onMouseMoved="#onMouseHovered" visible="false" onMouseClicked="#onClicked">
+                        <ImageView fx:id="farm" layoutX="515.0" layoutY="507.0" onMouseClicked="#onClicked" onMouseMoved="#onMouseHovered" visible="false">
                            <image>
                               <Image url="@../../../../icons/farm.png" />
                            </image>
@@ -750,7 +750,7 @@
                            </effect>
                         </ImageView>
                      </Group>
-                     <ImageView fx:id="barracks" fitHeight="103.0" fitWidth="128.0" layoutX="298.0" layoutY="509.0" onMouseMoved="#onMouseHovered" visible="false" onMouseClicked="#onClicked">
+                     <ImageView fx:id="barracks" fitHeight="103.0" fitWidth="128.0" layoutX="298.0" layoutY="509.0" onMouseClicked="#onClicked" onMouseMoved="#onMouseHovered" visible="false">
                         <image>
                            <Image url="@../../../../icons/barracks.png" />
                         </image>
@@ -759,7 +759,7 @@
                         </effect>
                      </ImageView>
 
-                     <ImageView fx:id="blacksmith" fitHeight="87.0" fitWidth="101.0" layoutX="194.0" layoutY="393.0" onMouseMoved="#onMouseHovered" visible="false" onMouseClicked="#onClicked">
+                     <ImageView fx:id="blacksmith" fitHeight="87.0" fitWidth="101.0" layoutX="194.0" layoutY="393.0" onMouseClicked="#onClicked" onMouseMoved="#onMouseHovered" visible="false">
                         <image>
                            <Image url="@../../../../icons/blacksmith.png" />
                         </image>
@@ -809,12 +809,12 @@
                            <Glow level="0.59" />
                         </effect>
                      </ImageView>
-                     <ImageView fx:id="port" fitHeight="156.0" fitWidth="200.0" layoutX="272.0" layoutY="728.0" onMouseMoved="#onMouseHovered" visible="false" onMouseClicked="#onClicked">
+                     <ImageView fx:id="port" fitHeight="156.0" fitWidth="200.0" layoutX="272.0" layoutY="728.0" onMouseClicked="#onClicked" onMouseMoved="#onMouseHovered" visible="false">
                         <image>
                            <Image url="@../../../../icons/port.png" />
                         </image>
                      </ImageView>
-                     <ImageView fx:id="mine" fitHeight="156.0" fitWidth="154.0" layoutX="661.0" layoutY="73.0" onMouseMoved="#onMouseHovered" visible="false" onMouseClicked="#onClicked">
+                     <ImageView fx:id="mine" fitHeight="156.0" fitWidth="154.0" layoutX="661.0" layoutY="73.0" onMouseClicked="#onClicked" onMouseMoved="#onMouseHovered" visible="false">
                         <image>
                            <Image url="@../../../../icons/mine.png" />
                         </image>
@@ -828,7 +828,7 @@
          </StackPane>
       </children>
    </HBox>
-   <ToolBar layoutX="487.0" prefHeight="47.0" prefWidth="1229.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+   <ToolBar layoutX="487.0" prefHeight="25.0" prefWidth="1229.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <items>
          <Button fx:id="saveGameButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onActionSaveGame" prefHeight="25.0" prefWidth="300.0" text="Save Game" textAlignment="CENTER" />
          <Button fx:id="backToMenuButton" mnemonicParsing="false" onAction="#onActionBackToMenu" prefHeight="25.0" prefWidth="300.0" text="Back to Menu" />
@@ -860,6 +860,7 @@
    <ToolBar prefHeight="40.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
       <items>
          <Button fx:id="pauseButton" mnemonicParsing="false" onAction="#onActionPause" text="Pause" />
+         <Button fx:id="playButton" disable="true" mnemonicParsing="false" onAction="#onActionPlay" text="Play" />
       </items>
    </ToolBar>
 </AnchorPane>

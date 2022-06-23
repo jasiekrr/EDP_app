@@ -41,6 +41,7 @@ public class GameStartResources {
         gameStat.setWatchtowerlevel(0);
         gameStat.setCastlelevel(1);
         gameStat.setHousinglevel(1);
+        gameStat.setBuildingvelocity(100);
 
         switch (faction) {
             case "rome" -> {

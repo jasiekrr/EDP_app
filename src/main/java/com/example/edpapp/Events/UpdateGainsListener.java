@@ -1,6 +1,5 @@
 package com.example.edpapp.Events;
 
-import com.example.edpapp.models.GameStat;
 import com.google.common.eventbus.Subscribe;
 import javafx.scene.control.Label;
 
