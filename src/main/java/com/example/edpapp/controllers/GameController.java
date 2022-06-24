@@ -646,7 +646,6 @@ public class GameController implements Initializable {
 
                     Platform.runLater(
                             () -> {
-                                eventBus.post(new BuildingBuiltEvent(gameStat));
                                 switch (buildingName) {
                                     case "farm" -> {
                                         updateFarm();
@@ -680,6 +679,7 @@ public class GameController implements Initializable {
                                         updateLumberjack();
                                     }
                                 }
+                                eventBus.post(new BuildingBuiltEvent(gameStat));
                             }
                     );
                     return;
